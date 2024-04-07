@@ -1,9 +1,9 @@
 # Paper World 🌍
 
->🌐Innovation : ✨💫⭐🌟
->🌐Impact : 💐🌷🌸🌺
->🌐Popularity : 🔥☄️❤️‍🔥👩‍🚒
->🌐Recommendation : 👍🏿👍🏽👍🏻👍
->🌐Understanding : 😉🤨🤔🧐 
+>🌐Innovation : ✨💫⭐🌟 <br>
+>🌐Impact : 💐🌷🌸🌺 <br>
+>🌐Popularity : 🔥☄️❤️‍🔥👩‍🚒 <br>
+>🌐Recommendation : 👍🏿👍🏽👍🏻👍 <br>
+>🌐Understanding : 😉🤨🤔🧐  <br>
 
 ## Reinforcement Learning
