@@ -7,3 +7,14 @@
 >🌐Understanding : 😉🤨🤔🧐  <br>
 
 ## Reinforcement Learning
+
+* Model-Free
+* Model-Based
+* Robotics
+* Games
+* Exploration vs. Exploitation
+* Inverse RL
+* Multi-Agent
+* Hierarchical Learning
+* Transfer Learning
+* ...
