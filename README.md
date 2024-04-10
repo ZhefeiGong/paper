@@ -10,7 +10,7 @@
 
 ### 💡Learning
 
-* [Reinforcement Learning](topics/reinforcemenr_learning/README.md)
+* [Reinforcement Learning](topics/reinforcement_learning/README.md)
 
 
 ### 🦾Robotics
