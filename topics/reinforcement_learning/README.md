@@ -4,7 +4,7 @@
 
 * [Imitation Learning](#imitation-learning)
 * [Policy Gradient](#policy-gradient)
-* [Actor-Critic](actor-critic)
+* [Actor-Critic](#actor-critic)
 * [Q-Learning](#q-learning)
 * [Planning](#planning)
 * [Model-Based](#model-based)
