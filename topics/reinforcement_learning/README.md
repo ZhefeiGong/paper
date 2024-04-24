@@ -14,6 +14,7 @@
 * [Inference](#inference)
 	* [Variational Inference](#variational-inference)
 * [Inverse RL](#inverse-rl)
+* [Sequence Model](#sequence-model)
 
 **🔬Resources**
 * [Books](#books)
@@ -232,6 +233,18 @@
 |                 |                                                                                                                   |                                                                                                                                                                               |                                                                                                                                                                      |
 
 
+## Sequence Model
+
+| Date          | Title                                                                                 | Summary                                                                                                                                                                      | Links                                                                                                                                                 |
+| ------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ICLR<br>2019  | **Recurrent Experience Replay in Distributed Reinforcement Learning**                 | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://openreview.net/forum?id=r1lyTjAqYX)</div> |
+| 2019          | **Fine-Tuning Language Models from Human Preferences**                                | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/1909.08593)</div>           |
+| 2022          | **Training language models to follow instructions with human feedback**               | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2203.02155)</div>           |
+| ICCV<br>2019  | **Learning Cooperative Visual Dialog Agents with Deep Reinforcement Learning**        | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/1703.06585)</div>           |
+| EMNLP<br>2020 | **Human-centric Dialog Training via Offline Reinforcement Learning**                  | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2010.05848)</div>           |
+| ACL<br>2022   | **CHAI: A CHatbot AI for Task-Oriented Dialogue with Offline Reinforcement Learning** | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/1909.08593)</div>           |
+| ICLR<br>2023  | **Offline RL for Natural Language Generation with Implicit Language Q Learning**      | <sub>Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2206.11871)</div>           |
+|               |                                                                                       |                                                                                                                                                                              |                                                                                                                                                       |
 
 
 ## Books
