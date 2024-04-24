@@ -22,3 +22,8 @@
 
 ## Random
 
+
+## Resources
+
+* [Robot-Learning Academic Tree](src/robot-learning.md)
+
