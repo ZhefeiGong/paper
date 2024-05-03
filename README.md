@@ -15,9 +15,12 @@
 
 * [Large Language Model](topics/large_language_model/README.md)
 
+* [Representation Learning](topics/representation_learning/README.md)
+
 
 ### 🦾Robotics
 
+* [Robot Learning](topics/robot_learning/README.md)
 
 
 ## Random
