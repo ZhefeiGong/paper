@@ -1,14 +1,15 @@
-# Robot Learning
+# Manipulation
 
 
 **📋Catalogue**
 * [In-Hand Manipulation](#in-hand-manipulation)
 
+**🔬Resources**
+* [Standard](#standard)
 
 **📖Keyword**
 * SO(3) : 3D rotation group - 纯旋转
 * SE(3) : Special Euclidean Group - 刚体运动
-
 
 
 ## In-Hand Manipulation
@@ -19,12 +20,6 @@
 | 2023<br>CoRL | **General In-Hand Object Rotation with Vision and Touch** | <sub>Provide RotateIt, a system can rotate objects along **multiple axes**.First train a **Oracle Policy** with ground-truth object properties through **PPO**. Then distill the policy into real-world scenarios with multimodal data(visual+tactile). During the sim2real distilling, train a **Visuotactile Transformer** to infer representation from realistic inputs. 💫\|🌷\|☄️\|👍🏻\|🤔</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2309.09979)</div> |
 |              |                                                           |                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                                                                                             |
 |              |                                                           |                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                                                                                             |
-
-
-
-
-**🔬Resources**
-* [Standard](#standard)
 
 
 ## Standard

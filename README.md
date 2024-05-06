@@ -20,7 +20,7 @@
 
 ### 🦾Robotics
 
-* [Robot Learning](topics/robot_learning/README.md)
+* [Manipulation](topics/manipulation/README.md)
 
 
 ## Random
