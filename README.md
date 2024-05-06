@@ -15,7 +15,7 @@
 
 * [Large Language Model](topics/large_language_model/README.md)
 
-* [3D Vision](2.literature/paper/topics/3d_vision/README.md)
+* [3D Vision](/topics/3d_vision/README.md)
 
 
 ### 🦾Robotics
