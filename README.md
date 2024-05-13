@@ -28,5 +28,5 @@
 
 ## Resources
 
-* [Robot Learning Academic Tree](robot_Learning_academic_tree.md)
+* [Robot Learning Academic Tree](./src/robot_Learning_academic_tree.md)
 
