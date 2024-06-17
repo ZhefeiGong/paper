@@ -22,6 +22,8 @@
 
 * [Manipulation](topics/manipulation/README.md)
 
+* [Locomotion](topics/locomotion/README.md)
+
 
 ## Random
 
