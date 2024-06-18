@@ -8,7 +8,23 @@
 **🔬Resources**
 * [Standard](#standard)
 
+**📚Knowledge**
+* LoRa(Low-Rank Adaptation)
+	LoRa, short for "Low-Rank Adaptation," is a technique designed to fine-tune large pre-trained models efficiently by introducing **low-rank matrix decomposition**. It significantly reduces the number of parameters that need to be updated during the fine-tuning process, thereby decreasing computational and storage costs while maintaining model performance.
+* Encoder $\Rightarrow$ BERT(Bidirectional Encoder Representations from Transformers)
+	* Masked Language Model, MLM
+	* Next Sentence Prediction, NSP
+* Decoder $\Rightarrow$ GPT(Generative Pre-trained Transformer)
+	* Auto-regressive Training Process
+* Low Rank Adaptation(LRA)
 
+
+## Benchmark
+
+| Date            | Title                                                                                        | Summary                                                                                                                                                                                                                                                                                                            | Links                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NeurIPS<br>2022 | **Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering** | <sub>Provide **ScienceQA** benchmark, a new benchmark that consists of **∼21k** multimodal multiple choice questions with diverse science topics and annotations of their answers with corresponding lectures and explanations, for learning the **chain of thought (CoT)** of LLM. 💫\|🌷\|❤️‍🔥\|👍🏻\|😉 </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2209.09513)</div><div style='width:150px;'>[![Blog](https://img.shields.io/badge/Blog-Website-yellow?logo=rss)](https://scienceqa.github.io/)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/lupantech/ScienceQA)</div> |
+|                 |                                                                                              |                                                                                                                                                                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ## Review
 

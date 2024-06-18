@@ -17,6 +17,8 @@
 
 * [3D Vision](/topics/3d_vision/README.md)
 
+* [Representation Learning](topics/representation_learning/README.md)
+
 
 ### 🦾Robotics
 
