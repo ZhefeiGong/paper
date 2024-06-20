@@ -9,15 +9,39 @@
 * [Standard](#standard)
 
 **📚Knowledge**
-* LoRa(Low-Rank Adaptation)
-	LoRa, short for "Low-Rank Adaptation," is a technique designed to fine-tune large pre-trained models efficiently by introducing **low-rank matrix decomposition**. It significantly reduces the number of parameters that need to be updated during the fine-tuning process, thereby decreasing computational and storage costs while maintaining model performance.
-* Encoder $\Rightarrow$ BERT(Bidirectional Encoder Representations from Transformers)
+* 🪐**LoRA(Low-Rank Adaptation)**
+	LoRA, short for "Low-Rank Adaptation," is a technique designed to fine-tune large pre-trained models efficiently by introducing **low-rank matrix decomposition**. It significantly reduces the number of parameters that need to be updated during the fine-tuning process, thereby decreasing computational and storage costs while maintaining model performance.
+* 🪐**Encoder** $\Rightarrow$ **BERT**(Bidirectional Encoder Representations from Transformers)
 	* Masked Language Model, MLM
 	* Next Sentence Prediction, NSP
-* Decoder $\Rightarrow$ GPT(Generative Pre-trained Transformer)
+* 🪐**Decoder** $\Rightarrow$ **GPT**(Generative Pre-trained Transformer)
 	* Auto-regressive Training Process
-* Low Rank Adaptation(LRA)
-
+* 🪐**Components of Transformer**
+	a. **Input Embeddings**
+	- **Token Embeddings** 
+		Converts input tokens into dense vectors.
+	- **Positional Encodings** 
+		Adds positional information to the token embeddings since the model does not inherently capture word order. 
+	b. **Encoder-Decoder Structure**
+	- The Transformer consists of an encoder and a decoder stack, each comprising multiple identical layers.
+	c. **Encoder**
+	- **Self-Attention Mechanism**
+		Computes the attention scores between each pair of input tokens to capture dependencies regardless of their distance.
+    - **Scaled Dot-Product Attention**
+	    Calculates the attention weights using dot products, scaling by the square root of the dimension.
+    - **Multi-Head Attention**
+	    Enhances the model's ability to focus on different positions by using multiple attention heads.
+    - **Feed-Forward Neural Networks (FFNN)**
+	    Applies two linear transformations with a ReLU activation in between.
+	- **Layer Normalization and Residual Connections**
+		Stabilizes and speeds up training.
+	d. **Decoder**
+	- **Masked Self-Attention** 
+		Ensures that each position can only attend to earlier positions in the sequence, maintaining the autoregressive property necessary for text generation.
+	* **Multi-Head Attention**
+		Splits the attention mechanism into multiple heads to capture different features and dependencies in the text.
+	- **Feed-Forward Neural Networks (FFNN)** 
+		Each layer contains a position-wise feed-forward network, consisting of two linear transformations with a ReLU activation in between.
 
 ## Benchmark
 
@@ -25,6 +49,14 @@
 | --------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | NeurIPS<br>2022 | **Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering** | <sub>Provide **ScienceQA** benchmark, a new benchmark that consists of **∼21k** multimodal multiple choice questions with diverse science topics and annotations of their answers with corresponding lectures and explanations, for learning the **chain of thought (CoT)** of LLM. 💫\|🌷\|❤️‍🔥\|👍🏻\|😉 </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2209.09513)</div><div style='width:150px;'>[![Blog](https://img.shields.io/badge/Blog-Website-yellow?logo=rss)](https://scienceqa.github.io/)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/lupantech/ScienceQA)</div> |
 |                 |                                                                                              |                                                                                                                                                                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+
+
+## LLM
+| Date | Title                                                    | Summary                                                           | Links                                                                                                                                                                                                                                                                                         |
+| ---- | -------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2023 | **LLaMA: Open and Efficient Foundation Language Models** | <sub>Proposed **LLaMA**, an open-source LLM(GPT framework).</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2302.13971)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/meta-llama/llama)</div> |
+|      |                                                          |                                                                   |                                                                                                                                                                                                                                                                                               |
+
 
 ## Review
 
