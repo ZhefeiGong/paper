@@ -4,7 +4,6 @@
 **📋Catalogue**
 * [Review](#review)
 
-
 **🔬Resources**
 * [Standard](#standard)
 
@@ -42,6 +41,13 @@
 		Splits the attention mechanism into multiple heads to capture different features and dependencies in the text.
 	- **Feed-Forward Neural Networks (FFNN)** 
 		Each layer contains a position-wise feed-forward network, consisting of two linear transformations with a ReLU activation in between.
+* 🪐**Task-Agnostic Web-Scale Pre-Training** in NLP
+	**Task-agnostic web-scale pre-training** is a technique in NLP where large language models are trained on vast amounts of diverse text data from the internet, without targeting any specific task. 
+	- **Task-Agnostic**: The model is not pre-trained for any specific application, allowing it to be versatile and adaptable to various tasks.
+	- **Web-Scale**: Training involves massive datasets sourced from the web, encompassing a wide range of language uses and domains.
+	- **Pre-Training**: The model learns general language features during this phase, which are later fine-tuned on smaller, task-specific datasets for optimal performance.
+	This approach enhances the model's generalization, efficiency, and overall performance across multiple NLP tasks.
+
 
 ## Benchmark
 
@@ -50,22 +56,19 @@
 | NeurIPS<br>2022 | **Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering** | <sub>Provide **ScienceQA** benchmark, a new benchmark that consists of **∼21k** multimodal multiple choice questions with diverse science topics and annotations of their answers with corresponding lectures and explanations, for learning the **chain of thought (CoT)** of LLM. 💫\|🌷\|❤️‍🔥\|👍🏻\|😉 </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2209.09513)</div><div style='width:150px;'>[![Blog](https://img.shields.io/badge/Blog-Website-yellow?logo=rss)](https://scienceqa.github.io/)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/lupantech/ScienceQA)</div> |
 |                 |                                                                                              |                                                                                                                                                                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-
 ## LLM
 | Date | Title                                                    | Summary                                                           | Links                                                                                                                                                                                                                                                                                         |
 | ---- | -------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 2023 | **LLaMA: Open and Efficient Foundation Language Models** | <sub>Proposed **LLaMA**, an open-source LLM(GPT framework).</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2302.13971)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/meta-llama/llama)</div> |
 |      |                                                          |                                                                   |                                                                                                                                                                                                                                                                                               |
 
-
-## Review
+## Overview
 
 | Date     | Title                                                                           | Summary                                                                                                                                                                                | Links                                                                                                                                       |
 | -------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mar/2023 | **Foundation Models for Decision Making: Problems, Methods, and Opportunities** | <sub>(1) **Foundation Models as Conditional Generative Models**. (2) **Foundation Models as Representation Learners**. (3) **Large Language Models as Agent and Environments**. </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2303.04129)</div> |
 |          |                                                                                 |                                                                                                                                                                                        |                                                                                                                                             |
 |          |                                                                                 |                                                                                                                                                                                        |                                                                                                                                             |
-
 
 
 
