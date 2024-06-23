@@ -52,6 +52,7 @@
 		Each layer contains a position-wise feed-forward network, consisting of two linear transformations with a ReLU activation in between.
 
 * 🔥**All of the Matrices in Transformer** | 8 Categories | 🔥
+	
 	[3b1b](https://www.youtube.com/watch?v=wjZofJX0v4M&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=5)
 	------------------------------------
 	* | Embedding |
