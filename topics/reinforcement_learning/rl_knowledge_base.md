@@ -1,6 +1,9 @@
 
 
-**📖Keyword**
+
+
+### 📖Keyword
+
 * Monte Carlo
 * Dynamic Programming
 * Bellman Equation
@@ -12,7 +15,7 @@
 * Stochastic
 
 
-**🌳Category**
+### 📖Category
 
 **⚖️Policy-Based Methods $\Rightarrow$ Policy Gradient**
 

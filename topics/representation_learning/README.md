@@ -1,5 +1,10 @@
 
 
+**📋Catalogue**
+
+**🔬Resources**
+
+
 **🧀Knowledge**
 * **InfoNCE** / Information Noise-Contrastive Estimation
 	It is a crucial objective function used in contrastive learning. It aims to maximize the mutual information between paired data samples, such as an image and its corresponding text description, while minimizing the mutual information between non-paired samples. 

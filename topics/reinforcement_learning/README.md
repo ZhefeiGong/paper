@@ -23,7 +23,7 @@
 **🔬Resources**
 * [Books](#books)
 * [Researchers](#researchers)
-* [Library](./rl_knowledge_library.md)
+* [KnowledgeBase](./rl_knowledge_base.md)
 
 
 ##  Imitation Learning

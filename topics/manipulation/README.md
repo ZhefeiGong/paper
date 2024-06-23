@@ -7,7 +7,7 @@
 **🔬Resources**
 * [Standard](#standard)
 
-**📖Keyword**
+**🧀Knowledge**
 * SO(3) : 3D rotation group - 纯旋转
 * SE(3) : Special Euclidean Group - 刚体运动
 

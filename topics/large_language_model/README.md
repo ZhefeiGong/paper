@@ -5,48 +5,8 @@
 * [Review](#review)
 
 **🔬Resources**
+* [KnowledgeBase](./llm_knowledge_base.md)
 * [Standard](#standard)
-
-**📚Knowledge**
-* 🪐**LoRA(Low-Rank Adaptation)**
-	LoRA, short for "Low-Rank Adaptation," is a technique designed to fine-tune large pre-trained models efficiently by introducing **low-rank matrix decomposition**. It significantly reduces the number of parameters that need to be updated during the fine-tuning process, thereby decreasing computational and storage costs while maintaining model performance.
-* 🪐**Encoder** $\Rightarrow$ **BERT**(Bidirectional Encoder Representations from Transformers)
-	* Masked Language Model, MLM
-	* Next Sentence Prediction, NSP
-* 🪐**Decoder** $\Rightarrow$ **GPT**(Generative Pre-trained Transformer)
-	* Auto-regressive Training Process
-* 🪐**Components of Transformer**
-	a. **Input Embeddings**
-	- **Token Embeddings** 
-		Converts input tokens into dense vectors.
-	- **Positional Encodings** 
-		Adds positional information to the token embeddings since the model does not inherently capture word order. 
-	b. **Encoder-Decoder Structure**
-	- The Transformer consists of an encoder and a decoder stack, each comprising multiple identical layers.
-	c. **Encoder**
-	- **Self-Attention Mechanism**
-		Computes the attention scores between each pair of input tokens to capture dependencies regardless of their distance.
-    - **Scaled Dot-Product Attention**
-	    Calculates the attention weights using dot products, scaling by the square root of the dimension.
-    - **Multi-Head Attention**
-	    Enhances the model's ability to focus on different positions by using multiple attention heads.
-    - **Feed-Forward Neural Networks (FFNN)**
-	    Applies two linear transformations with a ReLU activation in between.
-	- **Layer Normalization and Residual Connections**
-		Stabilizes and speeds up training.
-	d. **Decoder**
-	- **Masked Self-Attention** 
-		Ensures that each position can only attend to earlier positions in the sequence, maintaining the autoregressive property necessary for text generation.
-	* **Multi-Head Attention**
-		Splits the attention mechanism into multiple heads to capture different features and dependencies in the text.
-	- **Feed-Forward Neural Networks (FFNN)** 
-		Each layer contains a position-wise feed-forward network, consisting of two linear transformations with a ReLU activation in between.
-* 🪐**Task-Agnostic Web-Scale Pre-Training** in NLP
-	**Task-agnostic web-scale pre-training** is a technique in NLP where large language models are trained on vast amounts of diverse text data from the internet, without targeting any specific task. 
-	- **Task-Agnostic**: The model is not pre-trained for any specific application, allowing it to be versatile and adaptable to various tasks.
-	- **Web-Scale**: Training involves massive datasets sourced from the web, encompassing a wide range of language uses and domains.
-	- **Pre-Training**: The model learns general language features during this phase, which are later fine-tuned on smaller, task-specific datasets for optimal performance.
-	This approach enhances the model's generalization, efficiency, and overall performance across multiple NLP tasks.
 
 
 ## Benchmark
@@ -57,10 +17,11 @@
 |                 |                                                                                              |                                                                                                                                                                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ## LLM
-| Date | Title                                                    | Summary                                                           | Links                                                                                                                                                                                                                                                                                         |
-| ---- | -------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2023 | **LLaMA: Open and Efficient Foundation Language Models** | <sub>Proposed **LLaMA**, an open-source LLM(GPT framework).</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2302.13971)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/meta-llama/llama)</div> |
-|      |                                                          |                                                                   |                                                                                                                                                                                                                                                                                               |
+| Date | Title                                                    | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Links                                                                                                                                                                                                                                                                                         |
+| ---- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2023 | **LLaMA: Open and Efficient Foundation Language Models** | <sub>Proposed **LLaMA 1**, an open-source LLM(GPT framework). **LLaMA** is a network based on the transformer architecture with the three main difference. (1)Pre-normalization, using **RMSNorm** to normalize the input of each transformer sub-layer. (2)**SwiGLU** activation function, replacing the ReLU non-linearity. (3)Rotary Embeddings, removing the absolute positional embeddings and instead using **RoPE**. For efficient implementation, **LLaMA** uses an efficient implementation of **the causal multi-head attention**, and save activations which are recomputed during the backward pass through **checkpointing**. ⭐\|🌸\|❤️‍🔥\|👍🏻\|😉</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2302.13971)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/meta-llama/llama)</div> |
+| 2023 | **Llama 2: Open Foundation and Fine-Tuned Chat Models**  | <sub>Proposed **LLaMA 2**. The primary architectural differences from **Llama 1** include **increased context length** and **grouped-query attention (GQA)**. And also proposed **LLaMA 2 chatbot** that is fine-tuned with **RLHF**. 💫\|🌸\|❤️‍🔥\|👍🏽\|😉</sub>                                                                                                                                                                                                                                                                                                                                                                                                     | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2307.09288)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/meta-llama/llama)</div> |
+|      |                                                          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                                                                                                                                                                               |
 
 ## Overview
 
