@@ -61,12 +61,18 @@
 		Each layer contains a position-wise feed-forward network, consisting of two linear transformations with a ReLU activation in between.
 
 * 🔥**All of the Matrices in Transformer** | 8 Categories🔥	
+	
+	[3b1b](https://www.youtube.com/watch?v=wjZofJX0v4M&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=5)
+	
 	------------------------------------
+	
 	* | Embedding |
 		* one column represents one word (or one token)
 		* words $\Rightarrow$ vectors
 		* $W_E = d_{embed} \times n_{vocab}$
+	
 	------------------------------------
+	
 	* | Query |
 		* Query : Any adjectives in front of me?
 		* $W_Q \times \vec{E} = \vec{Q}$
@@ -94,12 +100,16 @@
 			* $n_{head}$ times ~~ $V(K^TQ)$ process
 	* | Output |
 		* $W_O=d_{embed}\times(d_{qk}\times n_{head})$
+	
 	------------------------------------
+	
 	* | Up-projection | 
 		* 
 	* | Down-projection | 
 		* 
+	
 	------------------------------------
+	
 	* | Unembedding |
 		* $W_U = n_{vocab} \times d_{embed}$
 		* procedure 
@@ -107,4 +117,6 @@
 			* then use Softmax layer(with temperature) to choose the one with highest probability
 				* Softmax
 					* **Logits** $\Rightarrow$ **Probabilities**
+	
 	------------------------------------
+
