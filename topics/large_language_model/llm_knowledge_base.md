@@ -3,23 +3,29 @@
 ## 📚 Random Keywords
 
 * 🪐**LoRA(Low-Rank Adaptation)**
+	
 	LoRA, short for "Low-Rank Adaptation," is a technique designed to fine-tune large pre-trained models efficiently by introducing **low-rank matrix decomposition**. It significantly reduces the number of parameters that need to be updated during the fine-tuning process, thereby decreasing computational and storage costs while maintaining model performance.
 
 * 🪐**Task-Agnostic Web-Scale Pre-Training** in NLP
+	
 	**Task-agnostic web-scale pre-training** is a technique in NLP where large language models are trained on vast amounts of diverse text data from the internet, without targeting any specific task. 
+	
 	- **Task-Agnostic**: The model is not pre-trained for any specific application, allowing it to be versatile and adaptable to various tasks.
 	- **Web-Scale**: Training involves massive datasets sourced from the web, encompassing a wide range of language uses and domains.
 	- **Pre-Training**: The model learns general language features during this phase, which are later fine-tuned on smaller, task-specific datasets for optimal performance.
+	
 	This approach enhances the model's generalization, efficiency, and overall performance across multiple NLP tasks.
 
 
 ### 🦾Transformer
 
 * 🪐**Encoder** $\Rightarrow$ **BERT**(Bidirectional Encoder Representations from Transformers)
+	
 	* Masked Language Model, MLM
 	* Next Sentence Prediction, NSP
 
 * 🪐**Decoder** $\Rightarrow$ **GPT**(Generative Pre-trained Transformer)
+	
 	* Auto-regressive Training Process
 
 * 🪐**Components of Transformer**🪐
@@ -29,8 +35,11 @@
 	a. **Input Embeddings**
 	
 	- **Token Embeddings** 
+		
 		Converts input tokens into dense vectors.
+		
 	- **Positional Encodings** 
+		
 		Adds positional information to the token embeddings since the model does not inherently capture word order. 
 	
 	b. **Encoder-Decoder Structure**
@@ -40,24 +49,39 @@
 	c. **😊Encoder😊**
 	
 	- **Self-Attention Mechanism**
+		
 		Computes the attention scores between each pair of input tokens to capture dependencies regardless of their distance.
+		
     - **Scaled Dot-Product Attention**
+	    
 	    Calculates the attention weights using dot products, scaling by the square root of the dimension.
+	    
     - **Multi-Head Attention**
+	    
 	    Enhances the model's ability to focus on different positions by using multiple attention heads.
+	    
     - **Feed-Forward Neural Networks (FFNN)**
+	    
 	    Applies two linear transformations with a ReLU activation in between.
+	    
 	- **Layer Normalization and Residual Connections**
+		
 		Stabilizes and speeds up training.
 	
 	d. **😊Decoder😊**
 	
 	- **Masked Self-Attention** 
+		
 		Ensures that each position can only attend to earlier positions in the sequence, maintaining the autoregressive property necessary for text generation.
+		
 	* **Multi-Head Attention** 
+		
 		Splits the attention mechanism into multiple heads to capture different features and dependencies in the text.
+		
 		* 🔥Multi-Head🔥
+			
 	- **Feed-Forward Neural Networks (FFNN)** 
+		
 		Each layer contains a position-wise feed-forward network, consisting of two linear transformations with a ReLU activation in between.
 
 * 🔥**All of the Matrices in Transformer** | 8 Categories🔥	
