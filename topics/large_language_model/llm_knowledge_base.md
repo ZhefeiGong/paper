@@ -23,15 +23,22 @@
 	* Auto-regressive Training Process
 
 * 🪐**Components of Transformer**🪐
+	
 	[Youtube](https://www.youtube.com/watch?v=wjZofJX0v4M) | 
+	
 	a. **Input Embeddings**
+	
 	- **Token Embeddings** 
 		Converts input tokens into dense vectors.
 	- **Positional Encodings** 
 		Adds positional information to the token embeddings since the model does not inherently capture word order. 
+	
 	b. **Encoder-Decoder Structure**
+	
 	- The Transformer consists of an encoder and a decoder stack, each comprising multiple identical layers.
+	
 	c. **😊Encoder😊**
+	
 	- **Self-Attention Mechanism**
 		Computes the attention scores between each pair of input tokens to capture dependencies regardless of their distance.
     - **Scaled Dot-Product Attention**
@@ -42,7 +49,9 @@
 	    Applies two linear transformations with a ReLU activation in between.
 	- **Layer Normalization and Residual Connections**
 		Stabilizes and speeds up training.
+	
 	d. **😊Decoder😊**
+	
 	- **Masked Self-Attention** 
 		Ensures that each position can only attend to earlier positions in the sequence, maintaining the autoregressive property necessary for text generation.
 	* **Multi-Head Attention** 
@@ -99,4 +108,3 @@
 				* Softmax
 					* **Logits** $\Rightarrow$ **Probabilities**
 	------------------------------------
-	📚refer to [3b1b](https://www.youtube.com/watch?v=wjZofJX0v4M&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=6)
