@@ -116,7 +116,7 @@
 			* $\rightarrow$ "Low Rank" Transformation 
 			* $\rightarrow$ $d_{embed}\times d_{qk}$ + $d_{qk} \times d_{embed}$
 			* $=Value_{\uparrow} \times Value_{\downarrow}$
-		* $V(K^TQ)$
+		* 🔥$V(K^TQ)$🔥
 		* Multi-Head 
 			* Practically, inside each head, use only the value-down matrix($Value_{\downarrow}$)
 				* and put all of the value-up matrices($Value_{\uparrow}$) together into Output Matrix($W_O$), in order to compress things into a single matrix multiplication
