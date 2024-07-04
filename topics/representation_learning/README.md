@@ -43,7 +43,9 @@
 
 | Date         | Title                                                 | Summary                                                                                                                                                                       | Links                                                                                                                                       |
 | ------------ | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| ICLR<br>2014 | **Auto-Encoding Variational Bayes** \| VAE            | <sub> Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/1312.6114)</div>  |
 | NIPS<br>2017 | **Neural Discrete Representation Learning** \| VQ-VAE | <sub> Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/1711.00937)</div> |
+|              |                                                       |                                                                                                                                                                               |                                                                                                                                             |
 
 
 ## Standard
