@@ -47,16 +47,3 @@
 
 
 
-## 📖Execution
-
-### 🪴Simulation Environment
-
-* OpenAI Gym
-* MuJoCo
-* DeepMind Control Suite
-* Unity ML-Agents
-* RoboSumo
-* PyBullet
-* CARLA
-* AirSim
-
