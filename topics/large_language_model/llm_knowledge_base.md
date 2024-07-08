@@ -16,6 +16,14 @@
 	
 	This approach enhances the model's generalization, efficiency, and overall performance across multiple NLP tasks.
 
+* 🪐ZeRO (Zero Redundancy Optimizer) 
+	ZeRO is a technology designed to optimize memory usage in training large-scale deep learning models. It does this by **partitioning model states, gradients, and optimizer states** across multiple devices (GPUs). 
+	ZeRO is divided into different stages:
+	1. **ZeRO-1**: **Partitions optimizer states** (e.g., Adam's moment estimates) across devices to reduce memory usage.
+	2. **ZeRO-2**: In addition to optimizer states, it **partitions gradients**, further reducing memory overhead.
+	3. **ZeRO-3**: Extends memory optimization by **partitioning model parameters**, achieving near-linear memory savings with the number of devices used.
+	These optimizations enable training larger models that would otherwise be impossible to fit into the memory of individual GPUs.
+
 
 ### 🦾Transformer
 
