@@ -64,7 +64,7 @@
 			* we use the reconstruction log-likelihood $log⁡\ 𝑝_{\Phi}(𝑥|𝑧)$ whose units are nats. 
 			* this measure tells us how effectively the decoder has learned to reconstruct an input image $x$ given its latent representation $z$.
 		* Loss : $l_i(\theta,\phi)=-E_{z\sim q_{\theta}(z|x_i)}[log \ p_{\phi}(x_i|z)]+KL(q_{\theta}(z|x_i)||p(z))$
-			* the **first** term encourages the decoder to learn to reconstruct the data.
+			* the **first** term encourages the decoder to learn to **reconstruct** the data.
 			* the **second** term is a regularizer, which measures how much information is lost when using $𝑞$ to represent $𝑝$. It is a measure of how close $q$ is to $𝑝$.
 			* $p$ is specified as **a standard Normal distribution** with mean zero and variance one, or $𝑝(𝑧)=\text{𝑁𝑜𝑟𝑚𝑎𝑙}(0,1)$
 		* Gradient descent to optimize : $\theta \leftarrow \theta - \rho \frac{\partial l }{\partial \theta}$
@@ -96,4 +96,5 @@
 		* We have followed the recipe for **variational inference**. We’ve defined:
 			- **a probability model** $p_{\phi}(x|z)$ of latent variables and data
 			- **a variational family** $q_{\theta}(z|x)$ for the latent variables to approximate our posterior
+	* [reference1](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/) | [reference2](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
 
