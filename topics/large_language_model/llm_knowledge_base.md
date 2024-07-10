@@ -24,8 +24,11 @@
 	3. **ZeRO-3**: Extends memory optimization by **partitioning model parameters**, achieving near-linear memory savings with the number of devices used.
 	These optimizations enable training larger models that would otherwise be impossible to fit into the memory of individual GPUs.
 
+* 🪐Deepseed
+	
 
-### 🦾Transformer
+
+## 🦾Transformer
 
 * 🪐**Encoder** $\Rightarrow$ **BERT**(Bidirectional Encoder Representations from Transformers)
 	

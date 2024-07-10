@@ -7,17 +7,6 @@
 **🔬Resources**
 * [Standard](#standard)
 
-**🧀Knowledge**
-* SO(3) : 3D rotation group - 纯旋转
-* SE(3) : Special Euclidean Group - 刚体运动
-
-**📊Dataset**
-1. **CALVIN**
-	* [LeaderBoard](http://calvin.cs.uni-freiburg.de/)
-	* [Code](https://github.com/mees/calvin)
-	* [Paper](https://arxiv.org/abs/2112.03227)
-
-
 ## In-Hand Manipulation
 
 | Date         | Title                                                     | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Links                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -53,7 +42,12 @@
 |              |                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                |
 
 
-
+## Dataset
+| Date         | Title                                                                                                             | Summary                                                                                                                                                                                                                                                                                                     | Links                                                                                                                                                                                                                                                                       |
+| ------------ | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2024<br>ICRA | **RoboAgent: Generalization and Efficiency in Robot Manipulation via Semantic Augmentations and Action Chunking** | <sub>Provided a multi-task manipulation real-world dataset **RoboSet**, which has 9,500 teleoperation trajectories. **RoboSet** involves 12 skills expressed across multiple tasks and scenes. Moreover, it introduced **Semantic Augmentations** for robotics training process. 💫\|🌷\|☄️\|👍🏿\|😉</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2309.01918)</div><div style='width:150px;'>[![Blog](https://img.shields.io/badge/Blog-Website-yellow?logo=rss)](https://robopen.github.io/)</div> |
+|              |                                                                                                                   |                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                             |
+|              |                                                                                                                   |                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                             |
 
 
 ## Standard
