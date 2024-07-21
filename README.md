@@ -1,4 +1,4 @@
-# Paper World 🌍
+# 🌎 Paper 🌍 World 🌏
 
 >🌐Innovation : ✨💫⭐🌟 <br>
 >🌐Impact : 💐🌷🌸🌺 <br>
@@ -7,7 +7,7 @@
 >🌐Understanding Level : 😉🤨🤔🧐  <br>
 
 
-## Topics
+## 🏷️ Topics
 
 ### 💡Learning
 
@@ -27,10 +27,21 @@
 * [Locomotion](topics/locomotion/README.md)
 
 
-## Random
+## 🏷️ Random
 
 
-## Resources
+## 🏷️ Venue
+
+* CVPR
+* ICLR
+* ICML
+* CoRL
+* ICRA
+* RSS
+* IROS
+* RA-L
+
+
+## 🏷️ Resources
 
 * [Robot Learning Academic Tree](./src/robot_Learning_academic_tree.md)
-
