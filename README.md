@@ -27,8 +27,6 @@
 * [Locomotion](topics/locomotion/README.md)
 
 
-## 🏷️ Random
-
 
 ## 🏷️ Venue
 
@@ -40,6 +38,8 @@
 * RSS
 * IROS
 * RA-L
+
+## 🏷️ Random
 
 
 ## 🏷️ Resources
