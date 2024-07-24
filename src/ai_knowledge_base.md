@@ -98,3 +98,11 @@
 			- **a variational family** $q_{\theta}(z|x)$ for the latent variables to approximate our posterior
 	* [reference1](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/) | [reference2](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
 
+* ##### ✨Gaussian Mixture Model (GMM)
+	
+	
+
+
+
+
+
