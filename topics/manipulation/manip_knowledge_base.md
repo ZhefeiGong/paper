@@ -9,9 +9,36 @@
 * Cartesian Pose | 笛卡尔坐标
 	* Position : $x$, $y$, $z$
 	* Orientation
-		* Euler Angles | 欧拉角 : $rx$, $ry$, $rz$
-		* Rotation Matrix | 旋转矩阵 : 
-		* Quaternions | 四元数 : 
+		* 🔥 | Euler Angles | 欧拉角 : $rx$, $ry$, $rz$
+			
+			* Roll | 横滚 | $rx$ | $\alpha$
+			* Pitch | 俯仰 | $ry$ | $\beta$
+			* Yaw | 偏航 | $rz$ | $\gamma$
+			
+			💦 Rotation Matrix | 旋转矩阵 : 
+			* $R_z(\gamma) = \begin{pmatrix} \cos \gamma & -\sin \gamma & 0 \\ \sin \gamma & \cos \gamma & 0 \\ 0 & 0 & 1 \end{pmatrix}$
+			* $R_y(\beta) = \begin{pmatrix} \cos \beta & 0 & \sin \beta \\ 0 & 1 & 0 \\ -\sin \beta & 0 & \cos \beta \end{pmatrix}$
+			* $R_x(\alpha) = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos \alpha & -\sin \alpha \\ 0 & \sin \alpha & \cos \alpha \end{pmatrix}$
+			* $R=R_z​(\gamma)R_y​(\beta)R_x​(\alpha)$
+			
+			💦 Gimbal Lock | 万向节死锁
+			* When we rotate **90** degree through Y-axis
+			* $R=R_z​(\gamma)R_y​(\frac{\pi}{2})R_x​(\alpha)= \begin{pmatrix} 0 & 0 & 1 \\ \sin(\alpha+\gamma) & \cos(\alpha+\gamma) & 0 \\ -\cos(\alpha+\gamma) & \sin(\alpha+\gamma) & 0 \end{pmatrix}$
+			* We cannot calculate the $\alpha$ and $\gamma$ **respectively**
+			* The **Gimbal Lock** is due to the possibility that two axes coincide, which leads to the **uncertainty** of **the final reverse resolution result** (when **Roll** and **Yaw** coincide, it is impossible to determine whether the rotation is Roll or Yaw from the final result).
+			
+		* 🔥 | Quaternions | 四元数 : $qx,qy,qz,qw$
+			
+			💦 **Multiple rotations** about **a coordinate axis** can be equivalent to **A Certain Angle** $w$ of rotation about **A Certain Vector** $\vec{K}=[x,y,z]$.
+			* $q=w+xi+yj+zk = ((x,y,z)sin\frac{\theta}{2}, cos\frac{\theta}{2})$ 
+				* $x=\vec{K}_x \cdot sin\frac{\theta}{2}$
+				* $y=\vec{K}_y \cdot sin\frac{\theta}{2}$
+				* $z=\vec{K}_z \cdot sin\frac{\theta}{2}$
+				* $w=cos\frac{\theta}{2}$
+				* $x^2+y^2+z^2+w^2=1$
+			
+			💦 LINK : [3b1b](https://www.youtube.com/watch?v=d4EgbgTm0Bg)
+			
 
 
 ## 📊 Dataset

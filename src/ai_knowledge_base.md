@@ -11,6 +11,8 @@
 	A sigmoid-shaped curve commonly used in binary classification tasks, especially in logistic regression, to estimate the probability of an event occurring.
 
 
+## 🧮 Probability
+
 * ##### ✨**Bayesian Inference**
 	$$
 	p(z|x)=\frac{p(x|z)\cdot p(z)}{p(x)}
@@ -100,9 +102,39 @@
 
 * ##### ✨Gaussian Mixture Model (GMM)
 	
+
+* ##### ✨ Flow-Based Model
 	
 
-
-
-
-
+* ##### ✨ Diffusion Model
+	* 🌟 The Forward Process
+		* Combing the fact with Markov assumption
+			* $q(x_{1:T}|x_0):= \prod^T_{t=1}q(x_t|x_{t-1})$
+		* Sample from a Gaussian distribution whose mean is the previous value
+			* $X_t \sim N(X_{t-1},1) \Longleftrightarrow X_t=X_{t-1}+N(0,1)$
+				Prove it : 
+				Apply the Law of Total Probability : $p_{x_t}(x_t)=\int p(x_t|x_{t-1})p(x_{t-1})dx_{t-1}$
+				Use the notation : $N(x;\mu,\sigma)=\frac{1}{\sigma\sqrt{2\pi}}exp(-\frac{1}{2}(\frac{x-\mu}{\sigma})^2)$
+				So, replace the conditional distribution : $p_{x_t}(x_t)=\int N(x_t;x_{t-1},1)p(x_{t-1})dx_{t-1}$
+				Due to the notation, we can rearrange : $p_{x_t}(x_t)=\int N(x_t-x_{t-1};0,1)p(x_{t-1})dx_{t-1}$
+				Use the definition of convolution : $(f∗g)(t)=\int^{\infty}_{\infty}​f(\tau)g(t−\tau)d\tau$
+				So, we get $p_{x_t}(x_t)=(N(0,1)*p_{x_{t-1}})(x_{t})$
+				Due to the independence of the two distribution, we can rewrite the above formation as $X_{t}=N(0,1) + X_{t-1}$
+		* Utilizing the above equivalent and using the **reparameterization** trick: 
+			* $q(x_{1:T}|x_0):= \prod^T_{t=1}q(x_t|x_{t-1}) := \prod^T_{t=1}N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)$
+			* Sample $x_t$ from $N(x_{t-1},1)$
+		* $\beta_1,...,\beta_T$ is a variance schedule (either learned or fixed)
+			If well-behaved, it ensures that $x_T$ is nearly an isotropic Gaussian for sufficiently large $T$.
+	
+	* 🌟 The Reverse Process
+		Starting with the pure Gaussian noise $p(x_T):=N(x_T;0,I)$. The model learns the joint distribution $p_{\theta}(x_{0:T})$ as $P_{\theta}(X_{0:T}):=p(x_T)\prod^T_{t=1}p_{\theta}(x_{t-1}|x_t):=p(x_T)\prod^T_{t=1}N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
+		* Due to the Markov Formulation that a given reverse diffusion transition distribution depends only on the previous time step: $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
+	
+	* 🌟 Training
+		* A Diffusion Model is trained by finding **the reverse Markov transitions** that **maximize** the likelihood of the training data. 
+			* **Minimize** Cross-Entropy Loss ： 
+				* $E_{q(x_0)}[-log\ p_{\theta}(x_0)]$
+		* In practice, we try to **minimize** the variational upper bound on the negative log likelihood. 
+			* $L_{CE}=-E_{q(x_0)}[log\ p_{\theta}(x_0)]=-E_{q(x_0)}[log (\int p_{\theta}(x_{0:T})d_{0:T})]$
+			* Introduce forward probability : $=-E_{q(x_0)}[log (\int q(x_{1:T}|x_0) \frac{p_{\theta}(x_{0:T})}{q(x_{1:T}|x_0)}d_{0:T})]=-E_{q(x_0)}[log (E_{q(x_{1:T}|x_0)} \frac{p_{\theta}(x_{0:T})}{q(x_{1:T}|x_0)})]$
+			* Use **Jensen inequality** : 
