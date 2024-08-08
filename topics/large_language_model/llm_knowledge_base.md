@@ -27,6 +27,10 @@
 * 🪐Deepseed
 	
 
+* 🪐MoE (Mixture of Expert)
+	
+
+
 
 ## 🦾Transformer
 

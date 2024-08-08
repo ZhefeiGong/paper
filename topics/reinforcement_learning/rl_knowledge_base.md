@@ -1,5 +1,5 @@
 
-### 📖Keyword
+### 📖 Keywords
 
 * Monte Carlo
 * Dynamic Programming
@@ -12,7 +12,7 @@
 * Stochastic
 
 
-### 📖Category
+### 📖 Category
 
 **⚖️Policy-Based Methods $\Rightarrow$ Policy Gradient**
 
@@ -44,6 +44,5 @@
 	* Deep Deterministic Policy Gradient(DDPG)
 	* Actor-Critic
 	* ...
-
 
 

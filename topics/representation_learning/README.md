@@ -2,13 +2,9 @@
 
 **📋Catalogue**
 
+
+
 **🔬Resources**
-
-
-**🧀Knowledge**
-* **InfoNCE** / Information Noise-Contrastive Estimation
-	It is a crucial objective function used in contrastive learning. It aims to maximize the mutual information between paired data samples, such as an image and its corresponding text description, while minimizing the mutual information between non-paired samples. 
-	Mathematically, given a set of positive samples $(x, x^+)$ and a set of negative samples $(x, x^-)$, the InfoNCE loss is defined as: $L_{InfoNCE}​=−log\frac{exp(sim(x,x^+)/τ)}{\sum_{i=1}^{N}exp(sim(x,x^i)/τ)}$
 
 
 
@@ -17,6 +13,7 @@
 | Date         | Title                                                                               | Summary                                                                                                                                                                       | Links                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------ | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ICLR<br>2023 | **DINO: DETR with Improved DeNoising Anchor Boxes for End-to-End Object Detection** | <sub> Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://cdn.openai.com/papers/weak-to-strong-generalization.pdf)</div><div style='width:150px;'>[![GitHub](https://img.shields.io/badge/GitHub-View-brightgreen?logo=github)](https://github.com/openai/weak-to-strong)</div><div style='width:150px;'>[![Blog](https://img.shields.io/badge/Blog-Posts-yellow?logo=rss)](https://mp.weixin.qq.com/s/f6YW-CxnLhnfMWTLg4M4Cw)</div><div style='width:150px;'>[![Note](https://img.shields.io/badge/Note-Read-blue?logo=dependabot)](summary/2024-03/2403.18349.md)</div> |
+|              |                                                                                     |                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 
 
