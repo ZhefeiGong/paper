@@ -32,7 +32,7 @@
 
 
 
-## 🦾Transformer
+## 🦾 Transformer
 
 * 🪐**Encoder** $\Rightarrow$ **BERT**(Bidirectional Encoder Representations from Transformers)
 	
