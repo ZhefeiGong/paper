@@ -18,6 +18,7 @@
 * [Transfer Learning](#transfer-learning)
 	* [Multi-Task Learning](#multi-task-learning)
 	* [Meta-Learning](#meta-learning)
+* [LLM](#llm)
 
 
 **🔬Resources**
@@ -316,6 +317,11 @@
 | 2019            | **Causal Reasoning from Meta-reinforcement Learning**                                    | <sub> Unifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic MotivationUnifying Count-Based Exploration and Intrinsic </sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/1901.08162)</div>                                              |
 |                 |                                                                                          |                                                                                                                                                                               |                                                                                                                                                                                          |
 
+
+## LLM
+| Date | Title                                                                                                      | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Links                                                                                                                                       |
+| ---- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2024 | **Hierarchical in-Context Reinforcement Learning with Hindsight Modular Reflections for Planning** \| HCRL | <sub>This work proposed a **Hierarchical in-Context Reinforcement Learning (HCRL)**, a novel framework that decomposes complex tasks into sub-tasks using an **LLM-based highlevel policy**, in which a complex task is decomposed into **sub-tasks** by **a high-level policy** on-the-fly. What's more, To improve the agent’s performance in multi-episode execution, it proposed **Hindsight Modular Reflection (HMR)**, where, instead of reflecting on the full trajectory, they replace the task objective with intermediate goals and let the agent reflect on **shorter trajectories** to improve reflection efficiency. ✨\|💐\|🔥\|👍🏽\|😉</sub> | <div style='width:150px;'>[![arXiv](https://img.shields.io/badge/arXiv-Paper-%23D2691E?logo=arxiv)](https://arxiv.org/abs/2408.06520)</div> |
 
 
 
