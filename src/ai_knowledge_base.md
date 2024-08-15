@@ -13,9 +13,9 @@
 ## 🧮 Probability
 
 * ##### ✨**Bayesian Inference**
-	$$
-	p(z|x)=\frac{p(x|z)\cdot p(z)}{p(x)}
-	$$
+	
+	$p(z|x)=\frac{p(x|z)\cdot p(z)}{p(x)}$
+	
 	* $x$ is the **data**
 	* $z$ is the **variable**
 	* $p(x∣z)$ is the **likelihood** function, representing the probability of the data $x$ given the latent variable $z$
@@ -65,4 +65,18 @@
 
 * ✨ Maximum Likelihood Estimation (MLE)
 	**MLE** focuses solely on maximizing the likelihood $p(\mathbf{X}|z)$, assuming no prior knowledge about $z$ : $z_{MLE}​=arg \max_{z} \ ​p(\mathbf{X}|z)$
+
+
+* ✨ Markov Chain (MC)
+	MCMC is based on the theory of Markov chains. A Markov chain is a stochastic process with the "memoryless" property, meaning that the next state depends only on the current state and not on the sequence of states that preceded it. Formally, if $x_0,x_1,x_2,…$ is a Markov chain, then the transition probability satisfies: $P(x_{t+1}​|x_{t}​,x_{t−1}​,…,x_0​)=P(x_{t+1}​|x_{t}​)$
+
+
+* ✨ Markov Chain Monte Carlo (MCMC)
+	* The core idea of MCMC is to construct a Markov chain that has the desired target distribution as its stationary distribution. 
+	* By running this chain for a sufficient number of steps, we can generate samples that approximate the target distribution. 
+	* The general steps of an MCMC algorithm are as follows:
+		1. **Initialization**: Choose an initial state $x_0$​.
+		2. **Generate a Candidate Sample**: Based on the current state $x_t$​, generate a candidate state $x_{t+1}$​.
+		3. **Accept-Reject Rule**: Use a rule to decide whether to accept the candidate sample $x_{t+1}$​ as the new state. If accepted, move to $x_{t+1}$​; otherwise, remain at $x_t$​.
+		4. **Repeat**: Repeat steps 2 and 3 until a sufficient number of samples are generated.
 

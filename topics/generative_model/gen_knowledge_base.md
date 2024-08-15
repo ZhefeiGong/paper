@@ -1,9 +1,9 @@
 
 
-## 🧀 Mathematical Theory
+# 🧀 Mathematical Theory
 
 
-### 🍰 VAE
+## 🍰 VAE
 
 * #### ✨**Variational Auto-Encoder(VAE)**
 	* 🌟The **neural net** perspective 
@@ -90,7 +90,7 @@
 	
 
 
-### 🍰 Diffusion
+## 🍰 Diffusion
 
 * #### ✨ Diffusion Model
 	* 🌟 The Forward Process
@@ -124,7 +124,7 @@
 			* $L_{CE}=-E_{q(x_0)}[log\ p_{\theta}(x_0)]=-E_{q(x_0)}[log (\int p_{\theta}(x_{0:T})d_{0:T})]$
 			* Introduce **forward** probability $q$ : $L_{CE}=-E_{q(x_0)}[log (\int q(x_{1:T}|x_0) \frac{p_{\theta}(x_{0:T})}{q(x_{1:T}|x_0)}d_{0:T})]$ $L_{CE}=-E_{q(x_0)}[log (E_{q(x_{1:T}|x_0)} \frac{p_{\theta}(x_{0:T})}{q(x_{1:T}|x_0)})]$
 			* Use **Jensen inequality** : $f(E[X])\leq E[f(X)]$, so we have $L_{CE}\leq -E_{q_(x_{0:T})}log\frac{p_{\theta}(x_{0:T})}{q(x_{1:T}|x_0)}$
-			* So we get the the variational lower bound(VLB) : $E_{q_(x_{0:T})}[log\frac{q(x_{1:T}|x_0)}{p_{\theta}(x_{0:T})}]=L_{VLB}$
+			* So we get **the variational lower bound(VLB)** : $E_{q_(x_{0:T})}[log\frac{q(x_{1:T}|x_0)}{p_{\theta}(x_{0:T})}]=L_{VLB}$
 		* To convert each term in the equation to be analytically computable, the objective can be further rewritten to be a combination of several **KL-divergence** and **entropy terms**.
 			* $L_{VLB}=E_{q(x_{0:T})}[log\frac{q(x_{1:T}|x_0)}{p_{\theta}(x_{0:T})}]$ $= E_{q}[log\frac{\prod^T_{t=1}q(x_t|x_{t-1})}{p_{\theta}(x_T)\prod^T_{t=1}p_{\theta}(x_{t-1}|x_t)}]$ $=E_q[-logp_{\theta}(x_T)+\sum^T_{t=1} log \frac{q(x_t|x_{t-1})}{p_{\theta}(x_{t-1}|x_t)}]$ $=E_q[-logp_{\theta}(x_T)+\sum^T_{t=2}log \frac{q(x_t|x_{t-1})}{p_{\theta}(x_{t-1}|x_t)}+log\frac{q(x_1|x_{0})}{p_{\theta}(x_{0}|x_1)}]$ $=E_q[-logp_{\theta}(x_T)+\sum^T_{t=2}log ( \frac{q(x_t|x_{t-1}, x_0)}{p_{\theta}(x_{t-1}|x_t)} ) +log\frac{q(x_1|x_{0})}{p_{\theta}(x_{0}|x_1)}]$ $=E_q[-logp_{\theta}(x_T)+\sum^T_{t=2}log (\frac{q(x_{t-1}|x_{t}, x_0) \cdot \frac{q(x_t|x_0)}{q(x_{t-1}|x_0)} }{p_{\theta}(x_{t-1}|x_t)} ) +log\frac{q(x_1|x_{0})}{p_{\theta}(x_{0}|x_1)}]$  $=E_q[-logp_{\theta}(x_T)+\sum^T_{t=2}log (\frac{q(x_{t-1}|x_{t}, x_0)}{p_{\theta}(x_{t-1}|x_t)} ) + \sum^T_{t=2}log\frac{q(x_t|x_0)}{q(x_{t-1}|x_0)}  +log\frac{q(x_1|x_{0})}{p_{\theta}(x_{0}|x_1)}]$ $=E_q[-logp_{\theta}(x_T)+\sum^T_{t=2}log (\frac{q(x_{t-1}|x_{t}, x_0)}{p_{\theta}(x_{t-1}|x_t)} )+log\frac{q(x_T|x_0)}{q(x_1|x_0)}  +log\frac{q(x_1|x_{0})}{p_{\theta}(x_{0}|x_1)}]$ $=E_q[log \frac{q(x_T|x_0)}{p_{\theta}(x_T)}+\sum^T_{t=2}log (\frac{q(x_{t-1}|x_{t}, x_0)}{p_{\theta}(x_{t-1}|x_t)} )-log p_{\theta}(x_{0}|x_1)]$ $=E_q(D_{KL}(q(x_T|x_0)||p_{\theta}(x_T))+\sum^T_{t=2}D_{KL}(q(x_{t-1}|x_t,x_0)||p_{\theta}(x_{t-1}|x_t)-log p_{\theta}(x_0|x_1))$
 			* Let’s label each component in the variational lower bound loss separately:
@@ -136,9 +136,10 @@
 	* 🌟 Parameterization
 		* $L_t$ | $\mu_{\theta}$
 			* $L_T$ is constant and can be ignored during training because $q$ has no learnable parameters and $x_T$ is a Gaussian noise.
-			* [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using a separate discrete decoder derived from $N(x_0;\mu_{\theta}(x_1,1),\sum_{\theta}(x_1,1))$.
+			* [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using **a separate discrete decoder** derived from $N(x_0;\mu_{\theta}(x_1,1),\sum_{\theta}(x_1,1))$.
+			* Then we only consider $L_t$
 			* $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$ | [Reverse Process](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/#reverse-diffusion-process)
-				* we would like to train $\mu_{\theta}$ to predict $\widetilde{\mu}_{t}=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_{\theta}(x_t,t))$
+				* we would like to **train** $\mu_{\theta}$ to predict $\widetilde{\mu}_{t}=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_{\theta}(x_t,t))$
 			* The loss $L_t$ is parameterized to minimize the difference from $\widetilde{\mu}_{t}$ : $L_t=E_{x_0, \epsilon}[\frac{1}{2||\sum_{\theta}(x_t,t)||^2_2} ||\widetilde{\mu}_{t}(x_t,x_0)-\mu_{\theta}(x_t,t)||^2]$
 				* [Close Form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions) of KL Divergence
 		* $\beta_t$
@@ -163,6 +164,9 @@
 	
 	* [reference](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 	
+
+
+
 
 
 * #### ✨ Gaussian Mixture Model (GMM)
