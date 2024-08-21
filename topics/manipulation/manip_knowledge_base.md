@@ -40,6 +40,24 @@
 			💦 LINK : [3b1b](https://www.youtube.com/watch?v=d4EgbgTm0Bg)
 			
 
+* Task and Motion Planning (TAMP)
+	* PDDL (Planning Domain Definition Language)
+		
+	* PDDLStream (Planning Domain Definition Language Stream)
+		
+
+* Sim2Real
+	* Domain Randomization
+		* 
+	* Domain Adaptation
+		* Utilize **Generative Adversarial Networks (GANs)** to map images from one distribution into another
+	* Transfer Learning
+		* 
+	* Model-Based RL
+		* 
+	* System Identification
+		* 
+
 
 ## 📊 Dataset
 
