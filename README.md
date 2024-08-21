@@ -18,6 +18,8 @@
 
 * [Representation Learning](topics/representation_learning/README.md)
 
+* [Generative Model](topics/generative_model/README.md)
+
 
 ### 🦾Robotics
 
