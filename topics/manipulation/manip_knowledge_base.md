@@ -58,6 +58,18 @@
 	* System Identification
 		* 
 
+* Proportional-Derivative (PD) controller
+	* Proportional (P)
+	* Derivative (D)
+
+* Rapidly-exploring Random Tree (RRT)
+	* It works by incrementally building **a tree** rooted at **the start position**, with branches that grow toward unexplored areas of the space. 
+	* The tree expands by **randomly sampling** the state space and connecting **the sampled points** to **the nearest existing point** in the tree, gradually covering the space and searching for a path to the goal.
+
+* Residual Policy
+	* $\pi_{total}​(s)=\pi_{baseline}​(s)+\pi_{residual}​(s)$
+
+
 
 ## 📊 Dataset
 
