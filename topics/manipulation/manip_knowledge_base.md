@@ -46,17 +46,23 @@
 	* PDDLStream (Planning Domain Definition Language Stream)
 		
 
-* Sim2Real
+* **Sim2Real**
 	* Domain Randomization
-		* 
+		* Introduce parameter randomization during simulation
+		* Randomizing parameters during simulation training covers a wide range of conditions, potentially encompassing variations that might occur in real-world settings
 	* Domain Adaptation
 		* Utilize **Generative Adversarial Networks (GANs)** to map images from one distribution into another
-	* Transfer Learning
-		* 
-	* Model-Based RL
-		* 
+	* Real2Sim2real
+		* construct a “digital twin” simulation environment
+	* TRANSIC
+		* Enable real-time human intervention to correct robot behaviors in real-world scenes. 
+		* The data collected from these interventions are used to train a residual policy
+		* Integrating both foundational and residual policies ensures smoother trajectories in real-world applications following sim-to-real transfer
 	* System Identification
-		* 
+		* Construct an accurate mathematical model of physical scenes in **real-world** environments, encompassing parameters such as dynamics and visual rendering
+	* Lang4sim2real
+		* Use natural language as a bridge to address the sim-to-real gap by using textual descriptions of images as a cross-domain unified signal.
+	
 
 * Proportional-Derivative (PD) controller
 	* Proportional (P)
@@ -68,8 +74,6 @@
 
 * Residual Policy
 	* $\pi_{total}​(s)=\pi_{baseline}​(s)+\pi_{residual}​(s)$
-
-
 
 ## 📊 Dataset
 
