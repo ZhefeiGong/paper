@@ -168,7 +168,6 @@
 
 
 
-
 * #### ✨ Gaussian Mixture Model (GMM)
 	
 
@@ -176,3 +175,7 @@
 * #### ✨ Flow-Based Model
 	
 
+
+# 🧀 Random
+
+* Langevin Dynamics
