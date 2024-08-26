@@ -9,13 +9,13 @@
 	* 🌟The **neural net** perspective 
 		* Encoder : $q_{\theta}(z|x)$
 			* a hidden representation $𝑧$
-			* the encoder $q_{\theta}​(z|x)$ outputs  is a Gaussian probability density. we can sample from this distribution to get noisy values of the representations $z$.
+			* the encoder $q_{\theta}​(z|x)$ outputs  is **a Gaussian probability density** ( $p$ ). we can sample from this distribution to get noisy values of the representations $z$.
 		* Decoder : $p_{\Phi}(x|z)$
 			* we use the reconstruction log-likelihood $log⁡\ 𝑝_{\Phi}(𝑥|𝑧)$ whose units are nats. 
 			* this measure tells us how effectively the decoder has learned to reconstruct an input image $x$ given its latent representation $z$.
 		* Loss : $l_i(\theta,\phi)=-E_{z\sim q_{\theta}(z|x_i)}[log \ p_{\phi}(x_i|z)]+KL(q_{\theta}(z|x_i)||p(z))$
 			* the **first** term encourages the decoder to learn to **reconstruct** the data.
-			* the **second** term is a regularizer, which measures how much information is lost when using $𝑞$ to represent $𝑝$. It is a measure of how close $q$ is to $𝑝$.
+			* the **second** term is a **regularizer**, which measures how much information is lost when using $𝑞$ to **represent** $𝑝$. It is a measure of how **close** $q$ is to $𝑝$.
 			* $p$ is specified as **a standard Normal distribution** with mean zero and variance one, or $𝑝(𝑧)=\text{𝑁𝑜𝑟𝑚𝑎𝑙}(0,1)$
 		* Gradient descent to optimize : $\theta \leftarrow \theta - \rho \frac{\partial l }{\partial \theta}$
 			
@@ -29,15 +29,15 @@
 			likelihood
 		* the goal is to infer good values of **the latent variables** given **observed data**, or to calculate the posterior $𝑝(𝑧|𝑥)$. Bayes says : $p(z|x)=\frac{p(x|z)p(z)}{p(x)}$
 		* $p(x)$ is called the evidence, and we can calculate it by marginalizing out the latent variables : $p(x)=\int p(x|z)p(z)dz$
-			* our **target** is to make $p(x)$ as **large** as possible
-			* this integral requires exponential time to compute. we therefore need to approximate this posterior distribution.
+			* _our **target** is to make $p(x)$ as **large** as possible_
+			* this integral requires exponential time to compute. we therefore need to **approximate** this **posterior** distribution.
 		* **variational inference** approximates the posterior $p(z|x)$ with a family of distributions $𝑞_{\lambda}(𝑧|𝑥)$.
 			* use **the Kullback-Leibler divergence**, which measures the information lost when using $𝑞$ to approximate $𝑝$. $KL(q_{\lambda}(z|x)||p(z|x))=𝐸_𝑞[log\ ⁡𝑞_{\lambda}(𝑧|𝑥)]−𝐸_𝑞[log⁡\ 𝑝(𝑥,𝑧)]+log\ p(x)$
 			* our **target** is to find the variational parameters $𝜆$ that **minimize** this divergence.
 			* due to the pesky evidence $p(x)$ which is intractable, we consider : $\text{ELBO}(\lambda)=E_{q}[log\ p(x,z)]-E_{q}[log \ q_{\lambda}(z|x)]$
 			* combining the KL divergence, we can rewrite the evidence : $log\ p(x) = \text{ELBO}(\lambda)+ KL(q_{\lambda}(z|x)||p(z|x))$
 			* try to **minimize** **the Kullback-Leibler divergence** between the approximate and exact posteriors. Instead, we can **maximize** the **ELBO** which is equivalent
-		* we can rewrite the ELBO, through $p(x,z)=p(x|z)p(z)$. $\text{ELBO}(\lambda)=E_{q}[log\ p(x,z)]-E_{q}[log \ q_{\lambda}(z|x)]$ $= E_q[log\ p(x|z)]+E_q[log\ p(z)]-E_{q}[log \ q_{\lambda}(z|x)$ $=E_q[log\ p(x|z)]-(E_{q}[log \ q_{\lambda}(z|x)-E_q[log\ p(z)])$ $=E_q[log\ p(x|z)]-KL(q_{\lambda}(z|x)||p(z))$
+		* 🔥 we can rewrite the ELBO, through $p(x,z)=p(x|z)p(z)$. $\text{ELBO}(\lambda)=E_{q}[log\ p(x,z)]-E_{q}[log \ q_{\lambda}(z|x)]$ $= E_q[log\ p(x|z)]+E_q[log\ p(z)]-E_{q}[log \ q_{\lambda}(z|x)$ $=E_q[log\ p(x|z)]-(E_{q}[log \ q_{\lambda}(z|x)-E_q[log\ p(z)])$ $=E_q[log\ p(x|z)]-KL(q_{\lambda}(z|x)||p(z))$ 🔥
 		* **Maximizing** the $\text{ELBO}$ is equivalent to **Maximizing** the log-likelihood function of the observed data $log\ p(x)$
 		* approximate posterior $𝑞_{\theta}(𝑧|𝑥,\lambda)$ with an _inference network_ (or encoder). parametrize the likelihood $𝑝_{\phi}(𝑥|𝑧)$ with a _generative network_ (or decoder)
 			* we can rewrite the $\text{ELBO}$ as : $\text{ELBO}(\theta,\phi)=E_{q_{\theta}(z|x)}[log\ p_{\phi}(x|z)]-KL(q_{\theta}(z|x)||p(z))$
@@ -51,7 +51,7 @@
 		- Representation Trick
 			* The expectation term in the loss function invokes generating samples from $z\sim q_{\phi}(z|x)$. Sampling is a stochastic process and therefore we cannot back-propagate the gradient. 
 			* To make it trainable, the reparameterization trick is introduced: It is often possible to express the random variable $z$ as a deterministic variable $z=T_{\phi}(x,\epsilon)$, where $\epsilon$ is an auxiliary independent random variable, and the transformation function $T_{\phi}$ parameterized by $\phi$ converts $\epsilon$ to $z$.
-				* $z\sim q_{\phi}(z|x^{(i)}=N(z;\mu^{(i)},\sigma^{2(i)}I)$
+				* $z\sim q_{\phi}(z|x^{(i)})=N(z;\mu^{(i)},\sigma^{2(i)}I)$
 				* $\Rightarrow$ $z=\mu+\sigma \odot \epsilon$, where $\epsilon \sim N(0,I)$
 	
 	* [reference1](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/) | [reference2](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
@@ -76,7 +76,7 @@
 	* Why don't we have a KL divergence like traditional VAE?
 		* $\begin{equation}q(z = k|x)= \begin{cases} 1& \text{for}\ k = arg\min_j||z_e(x) − e_j||^2 \\ 0& \text{otherwise} \end{cases}\end{equation}$
 			* the proposal distribution $q(z = k|x)$ is deterministic
-		* $p(z=k)=\frac{1}{K}​,\text{for all} k\in{1,2,…,K}$
+		* $p(z=k)=\frac{1}{K}​,\text{for}\ \text{all}\ k \in {1,2,…,K}$
 			* the prior is uniform
 		* so the the KL divergence : $KL(q(z|x)|p(z))$$=\sum^K_{k=1}q(z=k|x)log\frac{q(z=k|x)}{p(x)}$$=log\frac{1}{\frac{1}{K}} = log\ K$
 			, which is a constant
@@ -93,7 +93,7 @@
 ## 🍰 Diffusion
 
 * #### ✨ Diffusion Model
-	* 🌟 The Forward Process
+	* 🌟 The **Forward** Process
 		* Combing the fact with **Markov assumption**
 			* $q(x_{1:T}|x_0):= \prod^T_{t=1}q(x_t|x_{t-1})$
 		* Sample from a Gaussian distribution whose **mean** is the previous value
@@ -106,19 +106,20 @@
 				Use the definition of convolution : $(f∗g)(t)=\int^{\infty}_{\infty}​f(\tau)g(t−\tau)d\tau$
 				So, we get $p_{x_t}(x_t)=(N(0,1)*p_{x_{t-1}})(x_{t})$
 				Due to the independence of the two distribution, we can rewrite the above formation as $X_{t}=N(0,1) + X_{t-1}$
-		* Utilizing the above equivalent and using the [reparameterization trick](https://lilianweng.github.io/posts/2018-08-12-vae/#reparameterization-trick): 
-			* $q(x_{1:T}|x_0):= \prod^T_{t=1}q(x_t|x_{t-1}) := \prod^T_{t=1}N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)$
+		* Utilizing the above equivalent and using the [reparameterization trick](https://lilianweng.github.io/posts/2018-08-12-vae/#reparameterization-trick): $q(x_{1:T}|x_0):= \prod^T_{t=1}q(x_t|x_{t-1}) := \prod^T_{t=1}N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)$
 			* Sample $x_t$ from $N(x_{t-1},1)$
-		* $\beta_1,...,\beta_T$ is a variance schedule (either learned or fixed)
-			If well-behaved, it ensures that $x_T$ is nearly an isotropic Gaussian for sufficiently large $T$.
+			* $\beta_1,...,\beta_T$ is a variance schedule (either learned or fixed). If well-behaved, it ensures that $x_T$ is nearly an isotropic Gaussian for sufficiently large $T$.
+			* $x_t=\sqrt{\overline{\alpha}_t}x_0+\sqrt{1-\overline{\alpha}_t}\epsilon$
+			* $\alpha_t=1-\beta_t$
+			* $\overline{\alpha}_t=\prod^t_{i=1}\alpha_i$
 	
-	* 🌟 The Reverse Process
+	* 🌟 The **Reverse** Process
 		Starting with the pure Gaussian noise $p(x_T):=N(x_T;0,I)$. The model learns the joint distribution $p_{\theta}(x_{0:T})$ as $p_{\theta}(x_{0:T}):=p(x_T)\prod^T_{t=1}p_{\theta}(x_{t-1}|x_t):=p(x_T)\prod^T_{t=1}N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
 		* Due to **the Markov Formulation** that a given reverse diffusion transition distribution depends only on the **previous** time step: $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
 	
-	* 🌟 Training
+	* 🌟 **Training**
 		* A Diffusion Model is trained by finding **the reverse Markov transitions** that **maximize** the likelihood of the training data. 
-			* **Minimize** Cross-Entropy Loss ： 
+			* **Minimize** **Cross-Entropy** Loss ： 
 				* $E_{q(x_0)}[-log\ p_{\theta}(x_0)]$
 		* In practice, we try to **minimize** the **variational upper bound** on the negative log likelihood. 
 			* $L_{CE}=-E_{q(x_0)}[log\ p_{\theta}(x_0)]=-E_{q(x_0)}[log (\int p_{\theta}(x_{0:T})d_{0:T})]$
@@ -139,9 +140,10 @@
 			* [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using **a separate discrete decoder** derived from $N(x_0;\mu_{\theta}(x_1,1),\sum_{\theta}(x_1,1))$.
 			* Then we only consider $L_t$
 			* $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$ | [Reverse Process](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/#reverse-diffusion-process)
-				* we would like to **train** $\mu_{\theta}$ to predict $\widetilde{\mu}_{t}=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_{\theta}(x_t,t))$
-			* The loss $L_t$ is parameterized to minimize the difference from $\widetilde{\mu}_{t}$ : $L_t=E_{x_0, \epsilon}[\frac{1}{2||\sum_{\theta}(x_t,t)||^2_2} ||\widetilde{\mu}_{t}(x_t,x_0)-\mu_{\theta}(x_t,t)||^2]$
-				* [Close Form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions) of KL Divergence
+				* we would like to **train** $\mu_{\theta}$ to predict $\widetilde{\mu}_{t}=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_{t})$
+			* The loss $L_t$ is parameterized to **minimize** the **difference** from $\widetilde{\mu}_{t}$ : $L_t$$=E_{x_0, \epsilon}[\frac{1}{2||\sum_{\theta}(x_t,t)||^2_2} ||\widetilde{\mu}_{t}(x_t,x_0)-\mu_{\theta}(x_t,t)||^2]$ $=E_{x_0, \epsilon}[\frac{(1-\alpha_t)^2}{2\alpha_t(1-\overline{\alpha}_t)||\sum_{\theta}||_2^2} ||\epsilon_t-\epsilon_{\theta}(x_t,t)||^2]$ $=E_{x_0, \epsilon}[\frac{(1-\alpha_t)^2}{2\alpha_t(1-\overline{\alpha}_t)||\sum_{\theta}||_2^2} ||\epsilon_t-\epsilon_{\theta}(\sqrt{\overline{\alpha}_t} x_0 + \sqrt{1-\overline{\alpha}_t}\epsilon_t,t)||^2]$
+				* [Close Form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions) of **KL Divergence** | $P$ and $Q$ are the specific distributions
+			* 🔥 $L_t^{\text{simple}}=E_{t\sim [1,T], x_0, \epsilon_t}[||\epsilon_t-\epsilon_{\theta}(\sqrt{\overline{\alpha}_t} x_0 + \sqrt{1-\overline{\alpha}_t}\epsilon_t,t)||^2]$ 🔥
 		* $\beta_t$
 			* The forward variances are set to be a sequence of linearly increasing constants in [Ho et al. (2020)](https://arxiv.org/abs/2006.11239), from $\beta_1=10^{−4}$ to $\beta_T=0.02$.
 		* $\sum_{\theta}$
@@ -164,7 +166,6 @@
 	
 	* [reference](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 	
-
 
 
 

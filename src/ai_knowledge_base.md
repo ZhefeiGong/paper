@@ -106,5 +106,21 @@
 	* **Training** EBMs involves finding the parameters $\theta$ that minimize the discrepancy between the model distribution $P(\mathbf{x})$ and the true data distribution $P_{\text{data}}(\mathbf{x})$. This is often done using **maximum likelihood estimation**, which requires computing the gradient of the **log-likelihood** with respect to the parameters $\theta$ : $\frac{\partial \log P(\mathbf{x}; \theta)}{\partial \theta} = -\frac{\partial E(\mathbf{x}; \theta)}{\partial \theta} + \mathbb{E}_{P(\mathbf{x}; \theta)}\left[\frac{\partial E(\mathbf{x}; \theta)}{\partial \theta}\right]$
 	
 
+* ✨ **KL divergence**
+	* **Kullback-Leibler divergence** is a measure of how **one** probability distribution diverges from a **second**, reference probability distribution. It is a **non-symmetric** measure that quantifies the difference between two probability distributions $P$ and $Q$.
+	* In information theory, KL divergence is often interpreted as the amount of information lost when $Q$ **is used to approximate** $P$. A **lower** KL divergence indicates that $Q$ is a better **approximation** of $P$, while a **higher** value indicates a larger **difference** between the two distributions.
+	* The KL divergence from distribution $Q$ to distribution $P$ is defined as : $D_{KL}(P \parallel Q) = \sum_{i} P(i) \log\left(\frac{P(i)}{Q(i)}\right)$
+		* $D_{KL}(P \parallel Q)$ :  The divergence from $Q$ to $P$, representing the "distance" between the two distributions.
+		* This KL divergence measures the **loss** when **modeling** using $Q$ assuming the **data** comes from $P$. 
+	* For continuous distributions, the KL divergence is given by : $D_{KL}(P \parallel Q) = \int_{-\infty}^{\infty} P(x) \log\left(\frac{P(x)}{Q(x)}\right) \, dx$
+	
 
+
+## 💻 Code
+
+* torch.nn.Mish()
+	* Applies the Mish function, element-wise. 
+	* Mish: A Self Regularized Non-Monotonic Neural Activation Function. $Mish(x)=x∗Tanh(Softplus(x))$
+* torch.cumprod()
+	* Returns the cumulative product of elements of `input` in the dimension `dim`
 
