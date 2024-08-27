@@ -89,7 +89,6 @@
 			where $(t)$ refers to batch sequence in time. $N_i$ and $m_i$ are accumulated vector count and volume, respectively.
 	
 
-
 ## 🍰 Diffusion
 
 * #### ✨ Diffusion Model
@@ -188,7 +187,9 @@ Given this dataset, the **goal** of **generative modeling** is to fit a model to
 	* Normalizing **Flow** Models
 	* **Energy-Based** Models (EBMs)
 	* **Variational** Auto-Encoders (VAEs)
+	
 	🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱
+	
 	* In order to build such a **generative** model, we first need a way to represent a probability distribution. 
 	* One such way, as in likelihood-based models, is to directly model the **probability density function**. $p_{\theta}(x)=\frac{e^{-f_{\theta}(x)}}{Z_{\theta}}$, where $f_{\theta}(x)$ is the **energy-based model**. 
 	* Must evaluate the normalizing constant $Z_{\theta}$, a typically **intractable** quantity for any general $f_{\theta}(x)$. 
@@ -255,7 +256,9 @@ Given this dataset, the **goal** of **generative modeling** is to fit a model to
 		* **diffusion probabilistic modeling** is perhaps the **closest** to **score-based generative modeling**.
 		* **the ELBO** used for training diffusion probabilistic models is essentially equivalent to **the weighted combination** of **score matching objectives** used in score-based generative modeling | [paper](Denoising Diffusion Probabilistic Models)
 		* **score-based generative models** and **diffusion probabilistic models** can both be viewed as **discretizations** to **stochastic differential equations** determined by score functions. | [paper](https://arxiv.org/abs/2011.13456)
+		
 		🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱
+		
 		* The perspective of score matching and score-based models 
 			* allow one to calculate log-likelihoods exactly, solve inverse problems naturally, and is directly connected to energy-based models, Schrödinger bridges and optimal transport.
 		* The perspective of diffusion models
