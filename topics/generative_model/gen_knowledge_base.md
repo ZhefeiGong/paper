@@ -177,6 +177,98 @@
 	
 
 
+## 🍰 Score-based
+
+>[reference](https://yang-song.net/blog/2021/score/)
+
+Given this dataset, the **goal** of **generative modeling** is to fit a model to the data distribution such that we can **synthesize** **new data points** at will by **sampling** from the distribution.
+
+* #### ✨ Likelihood-Based Model
+	* **Autoregressive** Models
+	* Normalizing **Flow** Models
+	* **Energy-Based** Models (EBMs)
+	* **Variational** Auto-Encoders (VAEs)
+	🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱
+	* In order to build such a **generative** model, we first need a way to represent a probability distribution. 
+	* One such way, as in likelihood-based models, is to directly model the **probability density function**. $p_{\theta}(x)=\frac{e^{-f_{\theta}(x)}}{Z_{\theta}}$, where $f_{\theta}(x)$ is the **energy-based model**. 
+	* Must evaluate the normalizing constant $Z_{\theta}$, a typically **intractable** quantity for any general $f_{\theta}(x)$. 
+		* **restrict** the model architectures to make $Z_{\theta}$ tractable
+			1. causal convolutions in autoregressive models
+			2. invertible networks in normalizing flow models
+		* **approximate** the normalizing constant
+			1. variational inference in VAEs
+			2. MCMC sampling used in contrastive divergence
+
+* #### ✨ Implicit Generative Model
+	* Generative Adversarial Networks (GANs)
+		* unstable
+		* collapse
+
+* #### ✨ Score-Based Model
+	* **🌟 Score Function**
+		* By **modeling** the score function instead of **the density function**, we can sidestep the difficulty of intractable normalizing constants. The **score function** of a **distribution** $p(x)$ is defined as : $\nabla_x log\ p(x)$
+		* The score-based model is learned such that $s_{\theta}(x)\approx\nabla_x log\ p(x)$
+		* $s_{\theta}(x)$ is **independent** of the normalizing constant $Z_{\theta}$ : $s_{\theta}(x)$$=\nabla_xlog\ p_{\theta}(x)=-\nabla_xf_{\theta}(x)-\underbrace{\nabla_xlog\ Z_{\theta}}_{0}$$=-\nabla_xf_{\theta}(x)$
+		* Train **score-based** models by minimizing the **Fisher divergence** between the model and the data distributions : $E_{p(x)}[||\nabla_xlog\ p(x)-s_{\theta}(x)||^2_2]$
+	
+	* 🌟 **Langevin** dynamics
+		* provide an **MCMC procedure** to **sample** from a distribution $p(x)$ using only its **score function** $\nabla_xlog\ p(x)$. Specifically, it initializes **the chain** from an arbitrary prior distribution $x_0\sim\pi(x)$, and then iterates the following : $x_{i+1}\leftarrow x_i+\epsilon\nabla_xlog\ p(x) + \sqrt{2\epsilon}z_i$, $i=0,1,...,K$
+		* where $z_i \sim N(0,I)$. When $\epsilon\rightarrow 0$ and $K\rightarrow\infty$, $x_{K}$ obtained from the procedure converges to a sample from $p(x)$ under some regularity conditions.
+	
+	* **🌟 Score Matching**
+		1. Minimize **the Fisher divergence** **without** knowledge of the ground-truth data score | denoising score matching | sliced score matching
+		2. We train a score-based model with **score matching**, and then produce samples via **Langevin dynamics**
+		
+		* 🌃 **Naive** score-based modeling : 
+			* The **estimated score functions** are **inaccurate** in **low density regions**, where **few data points** are available for computing the score matching objective.
+			* When sampling with **Langevin dynamics**, the initial sample is highly likely in low density regions when data reside in a high dimensional space. 
+			* Therefore, having an **inaccurate score-based model** will **derail** Langevin dynamics from the very beginning of the procedure, preventing it from generating high quality samples that are representative of the data.
+		* 🌃 **Score-based** generative modeling with **multiple noise perturbations** | [paper2](https://arxiv.org/abs/2006.09011) | [paper1](https://arxiv.org/abs/1907.05600)
+			* **Perturb** data points with **noise** and **train** **score-based models** on the noisy data points, to bypass the difficulty of accurate score estimation in regions of **low data density**. 
+				* use **multiple scales** of noise perturbations simultaneously
+				* always perturb the data with **isotropic Gaussian noise**, and let there be a total of $L$ **increasing** standard deviations $\sigma_1 < \sigma_2 < \cdots < \sigma_L$.
+				* estimate the score function of each **noise-perturbed distribution**, $\nabla_x log \ p_{\sigma_i}(x)$, by training a **Noise Conditional Score-Based Model** $s_{\theta}(x,i)$(**NCSN**).
+					* use the objective to train : $\sum^L_{i=1}\lambda(i)E_{p_{\sigma_i}(x)}[||\nabla_xlog\ p(x)-s_{\theta}(x)||^2_2]$
+			* Then, we can produce samples from it by running **Langevin dynamics** for $i=L,L−1,⋯,1$ in sequence. This method is called **annealed Langevin dynamics**
+		* 🌃 **Score-based** generative modeling with **stochastic differential equations** (SDEs) | [paper](https://arxiv.org/abs/2011.13456)
+			* we can also represent **the continuous-time stochastic process** in a concise way, **stochastic differential equations** (SDEs) : $dx=f(x,t)dt+g(t)dw$
+				* where $f(⋅,t):R^d\rightarrow R^d$ is a vector-valued function called **the drift coefficient**
+				* $g(t)\in R$ is a real-valued function called the diffusion coefficient
+				* $w$ denotes a standard [Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)
+					* $dw$ can be viewed as infinitesimal white noise. 
+				* The solution of a stochastic differential equation is a continuous collection of random variables $\{x(t)\}_{t\in[0,T]}$.
+				* the choice of **SDEs** is not unique
+			* there's a closed form for **reverse SDE** : $dx=[f(x,t)-g^2(t)\nabla_x log\ p_t(x)]dt+g(t)dw$
+				* Here $dt$ represents a negative infinitesimal time step,  the SDE needs to be solved backwards in time (from $t=T$ to $t=0$)
+				* Solving **the reverse SDE** requires us to know the terminal distribution $p_T(x)$, which is close to the prior distribution $\pi(x)$ and the score function $\nabla_xlog⁡\ p_t(x)$.
+				* Once the **score-based model** $s_{\theta}(x,t)$ is trained to optimality, we can plug it into the expression of the reverse SDE to obtain **an estimated reverse SDE** : $dx=[f(x,t)-g^2(t)s_{\theta}(x,t)]dt+g(t)dw$
+			* by solving **the estimated reverse SDE** with **numerical** SDE solvers, we can simulate the reverse stochastic process for **sample generation** ...
+				* [Euler-Maruyama method](https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method)
+				* Predictor-Corrector samplers
+			* convert any SDE into an **ordinary differential equation** (ODE) ...
+				* $dx=[f(x,t)-\frac{1}{2}g^2(t)\nabla_x log\ p_t(x)]dt$
+			* controllable generation for **inverse problem solving** ...
+				* $\nabla_xlog\ p(x|y)=\nabla_x log\ p(x) + \nabla_x log\ p(y|x)$
+				* $s_{\theta}(x)\approx\nabla_xlog\ p(x)$
+	
+	* 🌟 **Connection** to **Diffusion Model**
+		* **diffusion probabilistic modeling** is perhaps the **closest** to **score-based generative modeling**.
+		* **the ELBO** used for training diffusion probabilistic models is essentially equivalent to **the weighted combination** of **score matching objectives** used in score-based generative modeling | [paper](Denoising Diffusion Probabilistic Models)
+		* **score-based generative models** and **diffusion probabilistic models** can both be viewed as **discretizations** to **stochastic differential equations** determined by score functions. | [paper](https://arxiv.org/abs/2011.13456)
+		🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱
+		* The perspective of score matching and score-based models 
+			* allow one to calculate log-likelihoods exactly, solve inverse problems naturally, and is directly connected to energy-based models, Schrödinger bridges and optimal transport.
+		* The perspective of diffusion models
+			* is naturally connected to VAEs, lossy compression, and can be directly incorporated with variational probabilistic inference.
+	
+	* 🌟 Drawbacks
+		There are **two** major challenges of score-based generative models. 
+		* First, **the sampling speed is slow** since it involves a large number of Langevin-type iterations. 
+			* The first challenge can be partially solved by using numerical ODE solvers for **the probability flow ODE** with lower precision (a similar method, **denoising diffusion implicit modeling** | [paper](https://arxiv.org/abs/2010.02502))
+		* Second, it is **inconvenient** to work with **discrete data distributions** since scores are only defined on continuous distributions.
+			* The second challenge can be addressed by learning an **autoencoder** on **discrete data** and performing **score-based generative** modeling on its continuous latent space | [paper](https://arxiv.org/abs/2106.05931)
+
+
 # 🧀 Random
 
-* Langevin Dynamics
+
