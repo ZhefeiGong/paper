@@ -108,13 +108,22 @@
 		* Utilizing the above equivalent and using the [reparameterization trick](https://lilianweng.github.io/posts/2018-08-12-vae/#reparameterization-trick): $q(x_{1:T}|x_0):= \prod^T_{t=1}q(x_t|x_{t-1}) := \prod^T_{t=1}N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)$
 			* Sample $x_t$ from $N(x_{t-1},1)$
 			* $\beta_1,...,\beta_T$ is a variance schedule (either learned or fixed). If well-behaved, it ensures that $x_T$ is nearly an isotropic Gaussian for sufficiently large $T$.
-			* $x_t=\sqrt{\overline{\alpha}_t}x_0+\sqrt{1-\overline{\alpha}_t}\epsilon$
-			* $\alpha_t=1-\beta_t$
-			* $\overline{\alpha}_t=\prod^t_{i=1}\alpha_i$
+			* 🔥 $x_t=\sqrt{\overline{\alpha}_t}x_0+\sqrt{1-\overline{\alpha}_t}\epsilon$ 🔥
+				* $x_0=\frac{1}{\sqrt{\overline{\alpha}_t}}(x_t-\sqrt{1-\overline{\alpha}_t}\epsilon)$
+				* 🔥 $q(x_t|x_0)=N(x_t;\sqrt{\overline{\alpha}_t}x_0,(1-\overline{\alpha}_t)I)$ 🔥
+				* $\alpha_t=1-\beta_t$
+				* $\overline{\alpha}_t=\prod^t_{i=1}\alpha_i$
 	
 	* 🌟 The **Reverse** Process
-		Starting with the pure Gaussian noise $p(x_T):=N(x_T;0,I)$. The model learns the joint distribution $p_{\theta}(x_{0:T})$ as $p_{\theta}(x_{0:T}):=p(x_T)\prod^T_{t=1}p_{\theta}(x_{t-1}|x_t):=p(x_T)\prod^T_{t=1}N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
-		* Due to **the Markov Formulation** that a given reverse diffusion transition distribution depends only on the **previous** time step: $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
+		* The reverse conditional probability is **tractable** when conditioned on $x_0$, derived from the **forward** process : $q(x_{t-1}|x_t;x_0)=N(x_{t-1};\widetilde{\mu}(x_t,x_0),\widetilde{\beta}_tI)$
+			* Using the Bayes's rule : $q(x_{t-1}|x_t,x_0)=q(x_t|x_{t-1},x_0)\frac{q(x_{t-1}|x_0)}{q(x_t|x_0)}$ $=\exp(-\frac{1}{2}((\frac{\alpha_t}{\beta_t}+\frac{1}{1-\overline{\alpha}_{t-1}})x^2_{t-1}-(\frac{2\sqrt{\alpha_t}}{\beta_t}x_t+\frac{2\sqrt{\overline{\alpha}_{t-1}}}{1-\overline{\alpha}_{t-1}}x_0)x_{t-1}-C(x_t,x_0)))$
+				* $\widetilde{\beta}_t=\frac{1-\overline{\alpha}_{t-1}}{1-\overline{\alpha}_t}\cdot\beta_t$
+				* $\widetilde{\mu}_t(x_t,x_0)=\frac{\sqrt{\alpha_t}(1-\overline\alpha_{t-1})}{1-\overline{\alpha}_t}x_t+\frac{\sqrt{1-\overline{\alpha}_{t-1}}\beta_t}{1-\overline{\alpha}_t}x_0$
+					* owing to : $x_0=\frac{1}{\sqrt{\overline{\alpha}_t}}(x_t-\sqrt{1-\overline{\alpha}_t}\epsilon)$
+					* 🔥 $\widetilde{\mu}_t(x_t,x_0)=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_t)$ 🔥
+		* **Starting** with the **pure** **Gaussian noise** $p(x_T):=N(x_T;0,I)$. The model learns the joint distribution $p_{\theta}(x_{0:T})$ as $p_{\theta}(x_{0:T}):=p(x_T)\prod^T_{t=1}p_{\theta}(x_{t-1}|x_t):=p(x_T)\prod^T_{t=1}N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$
+			* Due to **the Markov Formulation** that a given reverse diffusion transition distribution depends only on the **previous** time step: 
+				* 🔥 $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$ 🔥
 	
 	* 🌟 **Training**
 		* A Diffusion Model is trained by finding **the reverse Markov transitions** that **maximize** the likelihood of the training data. 
@@ -139,7 +148,10 @@
 			* [Ho et al. 2020](https://arxiv.org/abs/2006.11239) models $L_0$ using **a separate discrete decoder** derived from $N(x_0;\mu_{\theta}(x_1,1),\sum_{\theta}(x_1,1))$.
 			* Then we only consider $L_t$
 			* $p_{\theta}(x_{t-1}|x_t):=N(x_{t-1};\mu_{\theta}(x_t,t),\sum_{\theta}(x_t,t)))$ | [Reverse Process](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/#reverse-diffusion-process)
+				* need to learn **a neural network** to **approximate** the above **conditioned probability** distributions
 				* we would like to **train** $\mu_{\theta}$ to predict $\widetilde{\mu}_{t}=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_{t})$
+				* **reparameterize** the Gaussian noise term instead to make it predict $\epsilon_t$ from the input $x_t$ at time step $t$ : 
+					* 🔥 ${\mu}_{\theta}(x_t,t)=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{1-\alpha_t}{\sqrt{1-\overline{\alpha}_t}}\epsilon_{\theta}(x_t,t))$ 🔥
 			* The loss $L_t$ is parameterized to **minimize** the **difference** from $\widetilde{\mu}_{t}$ : $L_t$$=E_{x_0, \epsilon}[\frac{1}{2||\sum_{\theta}(x_t,t)||^2_2} ||\widetilde{\mu}_{t}(x_t,x_0)-\mu_{\theta}(x_t,t)||^2]$ $=E_{x_0, \epsilon}[\frac{(1-\alpha_t)^2}{2\alpha_t(1-\overline{\alpha}_t)||\sum_{\theta}||_2^2} ||\epsilon_t-\epsilon_{\theta}(x_t,t)||^2]$ $=E_{x_0, \epsilon}[\frac{(1-\alpha_t)^2}{2\alpha_t(1-\overline{\alpha}_t)||\sum_{\theta}||_2^2} ||\epsilon_t-\epsilon_{\theta}(\sqrt{\overline{\alpha}_t} x_0 + \sqrt{1-\overline{\alpha}_t}\epsilon_t,t)||^2]$
 				* [Close Form](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Multivariate_normal_distributions) of **KL Divergence** | $P$ and $Q$ are the specific distributions
 			* 🔥 $L_t^{\text{simple}}=E_{t\sim [1,T], x_0, \epsilon_t}[||\epsilon_t-\epsilon_{\theta}(\sqrt{\overline{\alpha}_t} x_0 + \sqrt{1-\overline{\alpha}_t}\epsilon_t,t)||^2]$ 🔥
