@@ -286,4 +286,6 @@ Given this dataset, the **goal** of **generative modeling** is to fit a model to
 
 # 🧀 Random
 
+* Fréchet Inception Distance (FID)
+
 
