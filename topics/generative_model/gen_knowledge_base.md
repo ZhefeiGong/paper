@@ -66,7 +66,7 @@
 	* Because $arg\min()$ is non-differentiable on a discrete space, the gradients $\nabla_zL$ from decoder input $z_q$ is copied to the encoder output $z_e$.
 	* **Loss**
 		* **reconstruction loss** : $||x-D(e_k)||_2^2$
-		* **vq loss**: The L2 error between the embedding space and the encoder outputs : $||sg[E(x)-e_k]||^2_2$
+		* **vq loss**: The L2 error between the embedding space and the encoder outputs : $||sg[E(x)]-e_k||^2_2$
 		* **commitment loss**: A measure to encourage the encoder output to stay close to the embedding space and to prevent it from fluctuating too frequently from one code vector to another : $\beta||E(x)-sg[e_k]||^2_2$
 		
 		1. the decoder $D$ optimizes the reconstruction loss term only
