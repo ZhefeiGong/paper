@@ -1,10 +1,10 @@
 # 🌎 Paper 🌍 World 🌏
 
->🌐Innovation : ✨💫⭐🌟 <br>
->🌐Impact : 💐🌷🌸🌺 <br>
->🌐Popularity : 🔥☄️❤️‍🔥👩‍🚒 <br>
->🌐Recommendation : 👍🏿👍🏽👍🏻👍 <br>
->🌐Understanding Level : 😉🤨🤔🧐  <br>
+>🌐 Innovation : ✨💫⭐🌟 <br>
+>🌐 Impact : 💐🌷🌸🌺 <br>
+>🌐 Popularity : 🔥☄️❤️‍🔥👩‍🚒 <br>
+>🌐 Recommendation : 👍🏿👍🏽👍🏻👍 <br>
+>🌐 Understanding Level : 😉🤨🤔🧐  <br>
 
 
 ## 🏷️ Topics
