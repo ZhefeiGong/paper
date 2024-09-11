@@ -29,7 +29,15 @@
 			
 		* 🔥 | Quaternions | 四元数 : $qx,qy,qz,qw$
 			
-			💦 **Multiple rotations** about **a coordinate axis** can be equivalent to **A Certain Angle** $w$ of rotation about **A Certain Vector** $\vec{K}=[x,y,z]$.
+			💦 **Axis-Angle** | 轴角表示
+			* Represent a 3D rotation by defining a rotation axis and the angle of rotation around that axis
+				* **Rotation Axis** $\hat{a}$ : A unit vector $\hat{a} = (a_x, a_y, a_z)$ that represents the axis around which the rotation occurs.
+				* **Rotation Angle** $\theta$ : A scalar that represents the amount of rotation (in radians) around the axis $\hat{a}$.
+				* The axis-angle representation can be expressed as a vector $\mathbf{v}$, which is the rotation angle $\theta$ multiplied by the axis $\hat{a}$ :
+					* $\mathbf{v}=\theta\hat{a}=\theta(a_x​,a_y​,a_z​)$
+			
+			💦 **Quaternions**
+			* **Multiple rotations** about **a coordinate axis** can be equivalent to **A Certain Angle** $w$ of rotation about **A Certain Vector** $\vec{K}=[x,y,z]$.
 			* $q=w+xi+yj+zk = ((x,y,z)sin\frac{\theta}{2}, cos\frac{\theta}{2})$ 
 				* $x=\vec{K}_x \cdot sin\frac{\theta}{2}$
 				* $y=\vec{K}_y \cdot sin\frac{\theta}{2}$
@@ -91,3 +99,4 @@
 5. Berkeley UR5
 	* [web](https://sites.google.com/view/berkeley-ur5/home)
 	* [google-drive](https://drive.google.com/drive/folders/1u5AV7maR3AJ8x5abmpDegRDUJEhFFEmd)
+

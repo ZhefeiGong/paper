@@ -6,10 +6,9 @@
 >🌐 Recommendation : 👍🏿👍🏽👍🏻👍 <br>
 >🌐 Understanding Level : 😉🤨🤔🧐  <br>
 
-
 ## 🏷️ Topics
 
-### 💡Learning
+### 💡 Learning
 
 * [Reinforcement Learning](topics/reinforcement_learning/README.md)
 
@@ -22,7 +21,7 @@
 * [Generative Model](topics/generative_model/README.md)
 
 
-### 🦾Robotics
+### 🦾 Robotics
 
 * [Manipulation](topics/manipulation/README.md)
 

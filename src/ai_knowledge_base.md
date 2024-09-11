@@ -1,13 +1,22 @@
 
-## 📚 Random Keywords
+## 📚 Keywords
 
 * ##### ✨Feature-wise Linear Modulation (FiLM)
 	$\text{FiLM}(x_i​,\gamma,\beta)=\gamma_i​⋅x_i​+\beta_i​$
 	* $\text{FiLM}$ dynamically adjusts neural network feature representations using scaling and shifting parameters generated from conditional inputs.
 
-
 * ##### ✨Logistic Cumulative Distribution Function (Logistic CDF)
 	* A sigmoid-shaped curve commonly used in binary classification tasks, especially in logistic regression, to estimate the probability of an event occurring.
+
+* ##### ✨Mixture Density Networks (MDN)
+	* A type of **neural network** designed to model **conditional probability** distributions using **a mixture of distributions** (often **Gaussian** distributions)
+	* Unlike typical regression models that predict a single output value, MDNs output **parameters** for **a mixture of probability distributions**, capturing **uncertainty** or **multiple modes** in the data.
+	* Suppose we model the conditional distribution $p(y | x)$ using a mixture of $K$ Gaussian distributions. Each Gaussian component $k$ is characterized by a mean $\mu_k(x)$, a variance $\sigma_k^2(x)$, and a mixture coefficient $\pi_k(x)$, all of which are functions of the input $x$.
+		* The **probability density function** for the mixture is given by : $p(y | x) = \sum_{k=1}^{K} \pi_k(x) \cdot \mathcal{N}\left( y; \mu_k(x), \sigma_k^2(x) \right)$
+			* $π_k​(x)$ are the mixture coefficients (also called **weights**), representing the probability of selecting the $k$-th component. These coefficients must satisfy: $\sum​_{k=1}^K\pi_k​(x)=1$ and $0\leq\pi_k​(x)\leq1$
+			* $\mathcal{N}(y; \mu_k(x), \sigma_k^2(x))$ is the probability density function of a Gaussian (normal) distribution with mean $\mu_k(x)$ and variance $\sigma_k^2(x)$, evaluated at $y$. The Gaussian PDF is given by: $\mathcal{N}(y; \mu_k(x), \sigma_k^2(x)) = \frac{1}{\sqrt{2 \pi \sigma_k^2(x)}} \exp\left( - \frac{(y - \mu_k(x))^2}{2 \sigma_k^2(x)} \right)$
+		* The loss function in MDNs is the **negative log-likelihood** of the observed data given the predicted mixture of distributions.
+			* For a single data point $(x_i, y_i)$, the loss is: $\mathcal{L}(x_i, y_i) = -\log \left( \sum_{k=1}^{K} \pi_k(x_i) \cdot \mathcal{N}(y_i; \mu_k(x_i), \sigma_k^2(x_i)) \right)$
 
 
 ## 🧮 Probability
@@ -18,7 +27,7 @@
 	
 	* $x$ is the **data**
 	* $z$ is the **variable**
-	* $p(x∣z)$ is the **likelihood** function, representing the probability of the data $x$ given the latent variable $z$
+	* $p(x|z)$ is the **likelihood** function, representing the probability of the data $x$ given the latent variable $z$
 	* $p(z)$ is the **prior** distribution
 	* $p(z|x)$ is the **posterior** distribution
 	* $p(x)$ is the **marginal likelihood** of the observed data, usually obtained by integrating over all possible values of $z$ : $p(x) = \int p(x|z)p(z)dz$
@@ -98,22 +107,37 @@
 	
 	* In an **Energy-Based Model**, the probability distribution over a set of variables $\mathbf{x}$ is defined by an energy function $E(\mathbf{x})$, where lower energy corresponds to higher probability. The probability distribution is given by **the Boltzmann distribution** : $P(\mathbf{x}) = \frac{e^{-E(\mathbf{x})}}{Z}$
 		where :
-		* $E(\mathbf{x})$ is the energy function that maps configurations $\mathbf{x}$ to a scalar value.
-		* $Z$ is the partition function, which normalizes the distribution and is defined as : $Z = \sum_{\mathbf{x}} e^{-E(\mathbf{x})}$
+		* $E(\mathbf{x})$ is the **energy function** that maps configurations $\mathbf{x}$ to a scalar value.
+		* $Z$ is the **partition function**, which normalizes the distribution and is defined as : $Z = \sum_{\mathbf{x}} e^{-E(\mathbf{x})}$
 		* The partition function $Z$ sums over all possible configurations of $\mathbf{x}$ and ensures that the probabilities sum to 1.
 	* The **choice** of the energy function $E(\mathbf{x})$ is crucial, as it determines the shape of the probability distribution. It is typically parameterized by a set of parameters $\theta$ : $E(\mathbf{x}; \theta)$
 	
-	* **Training** EBMs involves finding the parameters $\theta$ that minimize the discrepancy between the model distribution $P(\mathbf{x})$ and the true data distribution $P_{\text{data}}(\mathbf{x})$. This is often done using **maximum likelihood estimation**, which requires computing the gradient of the **log-likelihood** with respect to the parameters $\theta$ : $\frac{\partial \log P(\mathbf{x}; \theta)}{\partial \theta} = -\frac{\partial E(\mathbf{x}; \theta)}{\partial \theta} + \mathbb{E}_{P(\mathbf{x}; \theta)}\left[\frac{\partial E(\mathbf{x}; \theta)}{\partial \theta}\right]$
-	
+	* **Training** **EBMs** involves finding the parameters $\theta$ that **minimize** the **discrepancy** between the model distribution $P(\mathbf{x})$ and the true data distribution $P_{\text{data}}(\mathbf{x})$. This is often done using **maximum likelihood estimation**, which requires computing the gradient of the **log-likelihood** with respect to the parameters $\theta$ : $\frac{\partial \log P(\mathbf{x}; \theta)}{\partial \theta} = -\frac{\partial E(\mathbf{x}; \theta)}{\partial \theta} + \mathbb{E}_{P(\mathbf{x}; \theta)}\left[\frac{\partial E(\mathbf{x}; \theta)}{\partial \theta}\right]$
 
-* ✨ **KL divergence**
+
+* ##### ✨ **KL divergence**
 	* **Kullback-Leibler divergence** is a measure of how **one** probability distribution diverges from a **second**, reference probability distribution. It is a **non-symmetric** measure that quantifies the difference between two probability distributions $P$ and $Q$.
 	* In information theory, KL divergence is often interpreted as the amount of information lost when $Q$ **is used to approximate** $P$. A **lower** KL divergence indicates that $Q$ is a better **approximation** of $P$, while a **higher** value indicates a larger **difference** between the two distributions.
 	* The KL divergence from distribution $Q$ to distribution $P$ is defined as : $D_{KL}(P \parallel Q) = \sum_{i} P(i) \log\left(\frac{P(i)}{Q(i)}\right)$
 		* $D_{KL}(P \parallel Q)$ :  The divergence from $Q$ to $P$, representing the "distance" between the two distributions.
 		* This KL divergence measures the **loss** when **modeling** using $Q$ assuming the **data** comes from $P$. 
 	* For continuous distributions, the KL divergence is given by : $D_{KL}(P \parallel Q) = \int_{-\infty}^{\infty} P(x) \log\left(\frac{P(x)}{Q(x)}\right) \, dx$
-	
+
+
+* ##### ✨ Cross-Entropy
+	* **Cross-entropy loss** is a commonly used loss function in classification tasks. It measures the difference between two probability distributions: the **true distribution** (the ground truth labels) and the **predicted distribution** (the model's output). 
+	* The goal of minimizing cross-entropy loss is to make the predicted distribution as close as possible to the true distribution.
+	* For a single data point, given a true label $y$ (a one-hot encoded vector) and a predicted probability distribution $\hat{y}$​, the cross-entropy loss is defined as: $\mathcal{L}(y, \hat{y}) = - \sum_{i=1}^{C} y_i \log(\hat{y}_i)$
+		* $C$ is the number of classes.
+		- $y_i$​ is the true label for class $i$ (either 0 or 1 in one-hot encoding).
+		- $\hat{y}_i$​ is the predicted probability for class $i$.
+		- $\log(\hat{y}_i))$ is the logarithm of the predicted probability for class $i$.
+	- Cross-Entropy in **Binary Classification**
+		In binary classification (two classes, $C=2$), cross-entropy loss can be simplified to: $\mathcal{L}(y, \hat{y}) = - \left( y \log(\hat{y}) + (1 - y) \log(1 - \hat{y}) \right)$
+		* Where:
+			- $y \in \{0, 1\}$ is the true label.
+			- $\hat{y} \in [0, 1]$ is the predicted probability for the positive class
+		- This is also known as the **binary cross-entropy** loss and is commonly used in logistic regression and binary classification tasks.
 
 
 ## 💻 Code
