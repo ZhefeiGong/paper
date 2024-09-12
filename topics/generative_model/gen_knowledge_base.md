@@ -271,7 +271,7 @@ Given this dataset, the **goal** of **generative modeling** is to fit a model to
 		
 		🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱🧱
 		
-		* The perspective of score matching and score-based models 
+		* The perspective of **score matching** and **score-based** models 
 			* allow one to calculate log-likelihoods exactly, solve inverse problems naturally, and is directly connected to energy-based models, Schrödinger bridges and optimal transport.
 		* The perspective of diffusion models
 			* is naturally connected to VAEs, lossy compression, and can be directly incorporated with variational probabilistic inference.
@@ -289,3 +289,4 @@ Given this dataset, the **goal** of **generative modeling** is to fit a model to
 * Fréchet Inception Distance (FID)
 
 
+* Classifier-Free Guidance (CFG)
