@@ -3,6 +3,12 @@
 # 🧀 Mathematical Theory
 
 
+## 🍰 GAN
+
+>[Lil'Log](https://lilianweng.github.io/posts/2017-08-20-gan/)
+
+
+
 ## 🍰 VAE
 
 * #### ✨**Variational Auto-Encoder(VAE)**
@@ -59,11 +65,11 @@
 
 
 
-* #### ✨ VQ-VAE
+* #### ✨ **VQ-VAE**
 	* Vector Quantisation Variational AutoEncoder model learns a discrete latent variable by the encoder. 
 	* Let $e\in R^{K\times D},i=1,…,K$ be the latent embedding space (also known as “**codebook**”) in VQ-VAE, where K is the number of latent variable categories and D is the embedding size. An individual embedding vector is $e^i\in R^D,i=1,…,K$.
 	* The encoder output $E(x)=z_e$ goes through a nearest-neighbor lookup to match to one of $K$ embedding vectors and then this matched code vector becomes the input for the decoder $D$ : $z_q(x)=Quantize(E(x))=e_k$, where $k=arg \min_i ||E(x)-e_i||_2$
-	* Because $arg\min()$ is non-differentiable on a discrete space, the gradients $\nabla_zL$ from decoder input $z_q$ is copied to the encoder output $z_e$.
+	* Because $arg\min()$ is non-differentiable on a discrete space, the gradients $\nabla_zL$ from decoder input $z_q$ is **copied** to the encoder output $z_e$.
 	* **Loss**
 		* **reconstruction loss** : $||x-D(e_k)||_2^2$
 		* **vq loss**: The L2 error between the embedding space and the encoder outputs : $||sg[E(x)]-e_k||^2_2$
@@ -87,7 +93,13 @@
 			* $m_i^{(t)}=\gamma m_i^{(t-1)}+(1-\gamma)\sum^{n_i^{(t)}}_{j=1}z_{i,j}^{(t)}$
 			* $e^{(t)}_i=m^{(t)}_{i}/N_i^{(t)}$
 			where $(t)$ refers to batch sequence in time. $N_i$ and $m_i$ are accumulated vector count and volume, respectively.
-	
+
+## 🍰 Flow-Based
+
+>[Lil'Log](https://lilianweng.github.io/posts/2018-10-13-flow-models/)
+
+
+
 
 ## 🍰 Diffusion
 
@@ -176,15 +188,6 @@
 			- New methods have been proposed to make the process much faster, but the sampling is still slower than GAN.
 	
 	* [reference](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
-	
-
-
-
-* #### ✨ Gaussian Mixture Model (GMM)
-	
-
-
-* #### ✨ Flow-Based Model
 	
 
 
@@ -284,9 +287,21 @@ Given this dataset, the **goal** of **generative modeling** is to fit a model to
 			* The second challenge can be addressed by learning an **autoencoder** on **discrete data** and performing **score-based generative** modeling on its continuous latent space | [paper](https://arxiv.org/abs/2106.05931)
 
 
+## 🍰 Gaussian Mixture
+
+
+
+
 # 🧀 Random
 
 * Fréchet Inception Distance (FID)
-
-
+	* for image generation evaluation
 * Classifier-Free Guidance (CFG)
+	* for diffusion model
+* Classifier Guidance (CG)
+	* for diffusion model
+* Teacher forcing
+
+
+
+

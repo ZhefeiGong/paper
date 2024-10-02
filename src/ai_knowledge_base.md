@@ -65,22 +65,22 @@
 	* The **variance** of $X$ is : $Var(X)=\frac{(b-a)^2}{12}$
 
 
-* ✨ **MAP Inference**
+* ##### ✨ **MAP Inference**
 	**MAP Inference (Maximum A Posteriori Inference)** is a fundamental concept in probabilistic models, particularly in Bayesian statistics and machine learning. It involves finding the most likely parameters or states given observed data, under a probabilistic model : 
 	$z_{MAP}​=arg \max_{z} \ ​p(z|\mathbf{X})$
 	$=arg \max_{z} \frac{p(\mathbf{X}|z)p(z)}{p(\mathbf{X})}$
 	$= arg \max_{z} \ p(\mathbf{X}|z)p(z)$
 
 
-* ✨ **Maximum Likelihood Estimation (MLE)**
+* ##### ✨ **Maximum Likelihood Estimation (MLE)**
 	**MLE** focuses solely on maximizing the likelihood $p(\mathbf{X}|z)$, assuming no prior knowledge about $z$ : $z_{MLE}​=arg \max_{z} \ ​p(\mathbf{X}|z)$
 
 
-* ✨ **Markov Chain (MC)**
+* ##### ✨ **Markov Chain (MC)**
 	MCMC is based on the theory of Markov chains. A Markov chain is a stochastic process with the "memoryless" property, meaning that the next state depends only on the current state and not on the sequence of states that preceded it. Formally, if $x_0,x_1,x_2,…$ is a Markov chain, then the transition probability satisfies: $P(x_{t+1}​|x_{t}​,x_{t−1}​,…,x_0​)=P(x_{t+1}​|x_{t}​)$
 
 
-* ✨ **Markov Chain Monte Carlo (MCMC)**
+* ##### ✨ **Markov Chain Monte Carlo (MCMC)**
 	* The core idea of MCMC is to construct a Markov chain that has the desired target distribution as its stationary distribution. 
 	* By running this chain for a sufficient number of steps, we can generate samples that approximate the target distribution. 
 	* The general steps of an MCMC algorithm are as follows:
@@ -90,7 +90,7 @@
 		4. **Repeat**: Repeat steps 2 and 3 until a sufficient number of samples are generated.
 
 
-* ✨ **InfoNCE**
+* ##### ✨ **InfoNCE**
 	* **Information Noise-Contrastive Estimation** is a **loss** function commonly used in contrastive learning, especially within self-supervised learning frameworks. The purpose of **InfoNCE** is to distinguish **positive pairs** from **negative pairs**. By optimizing this loss function, models can learn to encode meaningful representations of data **without requiring labeled examples**.
 	
 	* Let $q$ be a query sample, $k^+$ be the positive sample corresponding to $q$, and $\{k_1^{-}, k_2^{-}, \cdots, k_K^{-} \}$ represent $K$ negative samples. The **InfoNCE** loss is defined as : $\mathcal{L}_{\text{InfoNCE}} = -\log \frac{\exp(\text{sim}(q, k^+) / \tau)}{\exp(\text{sim}(q, k^+) / \tau) + \sum_{i=1}^{K} \exp(\text{sim}(q, k_i^-) / \tau)}$
@@ -140,6 +140,7 @@
 		- This is also known as the **binary cross-entropy** loss and is commonly used in logistic regression and binary classification tasks.
 
 
+
 ## 💻 Code
 
 * torch.nn.Mish()
@@ -147,4 +148,56 @@
 	* Mish: A Self Regularized Non-Monotonic Neural Activation Function. $Mish(x)=x∗Tanh(Softplus(x))$
 * torch.cumprod()
 	* Returns the cumulative product of elements of `input` in the dimension `dim`
-
+* torch.bmm(`input`, `mat2`)
+	* If `input` is a (b×n×m) tensor, `mat2` is a (b×m×p) tensor, `out` will be a (b×n×p) tensor.
+* torch.unbind()
+	* Returns a tuple of all slices along a given dimension, already without it.
+* torch.nn.functional.softmax()
+	* $Softmax(x_i​)=\frac{exp(x_i​)}{\sum_j​exp(x_j​)}​$
+* torch.nn.GroupNorm()
+	* The input channels are separated into `num_groups` groups, each containing `num_channels / num_groups` channels. `num_channels` must be divisible by `num_groups`. The mean and standard-deviation are calculated separately over the each group.
+* torch.nn.functional.interpolate()
+	* Tensor interpolated to either the given `size` or the given `scale_factor`
+	* The algorithm used for interpolation is determined by `mode`.
+* torch.nn.functional.pad()
+	* 2 dimension
+		* padding_left
+		* padding_right
+	* 4 dimension
+		* padding_left
+		* padding_right
+		* padding_top
+		* padding_bottom
+	* 6 dimension
+		* padding_left
+		* padding_right
+		* padding_top
+		* padding_bottom
+		* padding_front
+		* padding_back
+* torch.nn.Conv2d()
+	* $Hout​=⌊\frac{Hin​+2×padding−dilation×(kernel\_size−1)−1​}{stride}+1⌋$
+* torch.nn.functional.normalize()
+	* Perform $L_p$​ normalization of inputs over specified dimension.
+* 🌬️**torch.view**()🌬️
+	* **shallow** copy
+	* need to be continuous
+	* flatten all the dimensions of Tensor into **one dimension**, and then reconstruct a Tensor from the incoming dimensional information **ordinarily**
+	* like np.resize / np.reshape
+	* torch.reshape > torch.view
+		* when the Tensor is contiguous, do the same thing
+			**shallow** copy
+		* when it's not, first change it through **torch.Tensor.contiguous**, then do the same thing
+			**deep** copy
+	* torch.resize > torch.reshape > torch.view
+		* Not only can **keep** the data area unchanged and change the shape, but also can **intercept** part of the data area or **fill** the data area
+		* **deep** copy
+* 🌬️**torch.transpose**() / **torch.permeate**()🌬️
+	* **shallow** copy
+	* **transpose** : exchange single-dim at a time
+	* **permeate** : exchange multi-dim at a time
+	* exchange the **original** dimensions **faithfully**
+* 🪵**Tensor.data_ptr**()🪵
+	* show the physical **address** of the tensor in `pytorch`
+	* 🥢`array.__array_interface__['data'][0]`🥢
+		* show the address for `numpy` array
