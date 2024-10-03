@@ -175,11 +175,17 @@
 		* padding_bottom
 		* padding_front
 		* padding_back
-* torch.nn.Conv2d()
-	* $Hout​=⌊\frac{Hin​+2×padding−dilation×(kernel\_size−1)−1​}{stride}+1⌋$
+* **🏔️torch.nn.Conv2d()🏔️**
+	$H_{out}​=⌊\frac{H_{in}​+2×padding−dilation×(kernel−1)−1​}{stride}+1⌋$
+	* `padding` ⤴️ $\Rightarrow$ `out` ⤴️
+* **🏔️torch.nn.ConvTranspose2d()🏔️**
+	$H_{out}=(H_{in}-1)\times stride-2\times padding+dilation\times (kernel-1)+padding_{output}+1$
+	* the `padding` is opposite to the `Conv2d`
+	* `padding` ⤴️ $\Rightarrow$ `out` ⤵️
+	* `output_padding` $\Rightarrow$ Additional size added to one side of each dimension in the output shape. | only add the `fixed` value dim to `right` or `bottom` | the padding value is based on the value of the `rightmost` or `bottommost`. 
 * torch.nn.functional.normalize()
 	* Perform $L_p$​ normalization of inputs over specified dimension.
-* 🌬️**torch.view**()🌬️
+* 🏔️**torch.view**()🏔️
 	* **shallow** copy
 	* need to be continuous
 	* flatten all the dimensions of Tensor into **one dimension**, and then reconstruct a Tensor from the incoming dimensional information **ordinarily**
@@ -192,7 +198,7 @@
 	* torch.resize > torch.reshape > torch.view
 		* Not only can **keep** the data area unchanged and change the shape, but also can **intercept** part of the data area or **fill** the data area
 		* **deep** copy
-* 🌬️**torch.transpose**() / **torch.permeate**()🌬️
+* 🏔️**torch.transpose**() / **torch.permeate**()🏔️
 	* **shallow** copy
 	* **transpose** : exchange single-dim at a time
 	* **permeate** : exchange multi-dim at a time
@@ -201,3 +207,4 @@
 	* show the physical **address** of the tensor in `pytorch`
 	* 🥢`array.__array_interface__['data'][0]`🥢
 		* show the address for `numpy` array
+
