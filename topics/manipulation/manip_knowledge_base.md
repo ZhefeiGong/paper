@@ -24,7 +24,7 @@
 			💦 Gimbal Lock | 万向节死锁
 			* When we rotate **90** degree through Y-axis
 			* $R=R_z​(\gamma)R_y​(\frac{\pi}{2})R_x​(\alpha)= \begin{pmatrix} 0 & 0 & 1 \\ \sin(\alpha+\gamma) & \cos(\alpha+\gamma) & 0 \\ -\cos(\alpha+\gamma) & \sin(\alpha+\gamma) & 0 \end{pmatrix}$
-			* We cannot calculate the $\alpha$ and $\gamma$ **respectively**
+			* We **cannot** calculate the $\alpha$ and $\gamma$ **respectively**
 			* The **Gimbal Lock** is due to the possibility that two axes coincide, which leads to the **uncertainty** of **the final reverse resolution result** (when **Roll** and **Yaw** coincide, it is impossible to determine whether the rotation is Roll or Yaw from the final result).
 			
 		* 🔥 | Quaternions | 四元数 : $qx,qy,qz,qw$
@@ -36,7 +36,7 @@
 				* The axis-angle representation can be expressed as a vector $\mathbf{v}$, which is the rotation angle $\theta$ multiplied by the axis $\hat{a}$ :
 					* $\mathbf{v}=\theta\hat{a}=\theta(a_x​,a_y​,a_z​)$
 			
-			💦 **Quaternions**
+			💦 **Quaternions** | 四元数表示
 			* **Multiple rotations** about **a coordinate axis** can be equivalent to **A Certain Angle** $w$ of rotation about **A Certain Vector** $\vec{K}=[x,y,z]$.
 			* $q=w+xi+yj+zk = ((x,y,z)sin\frac{\theta}{2}, cos\frac{\theta}{2})$ 
 				* $x=\vec{K}_x \cdot sin\frac{\theta}{2}$

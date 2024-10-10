@@ -189,13 +189,15 @@
 	* **shallow** copy
 	* need to be continuous
 	* flatten all the dimensions of Tensor into **one dimension**, and then reconstruct a Tensor from the incoming dimensional information **ordinarily**
-	* like np.resize / np.reshape
-	* torch.reshape > torch.view
+	* like **np.resize** / **np.reshape**
+	* **torch.reshape**
+		* **torch.reshape** > **torch.view**
 		* when the Tensor is contiguous, do the same thing
 			**shallow** copy
 		* when it's not, first change it through **torch.Tensor.contiguous**, then do the same thing
 			**deep** copy
-	* torch.resize > torch.reshape > torch.view
+	* **torch.resize** 
+		* **torch.resize** > **torch.reshape** > **torch.view**
 		* Not only can **keep** the data area unchanged and change the shape, but also can **intercept** part of the data area or **fill** the data area
 		* **deep** copy
 * 🏔️**torch.transpose**() / **torch.permeate**()🏔️
